@@ -13,7 +13,7 @@ export default function CollapsibleSection({
   title,
   children,
   headerRight,
-  defaultOpen = true,
+  defaultOpen = false,
 }: CollapsibleSectionProps) {
   const [open, setOpen] = useState(defaultOpen)
 
@@ -41,7 +41,7 @@ export default function CollapsibleSection({
             <path d="M2 3.5l3 3 3-3" />
           </svg>
         </button>
-        {headerRight && (
+        {headerRight && open && (
           <div className="ml-3 shrink-0">{headerRight}</div>
         )}
       </div>
