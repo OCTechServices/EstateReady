@@ -39,7 +39,8 @@ export default function Home() {
 
       {/* Hero */}
       <section className="bg-white border-b border-cream-dark relative overflow-hidden">
-        <HeroRibbons />
+        <div className="hidden sm:block"><HeroRibbons /></div>
+        <div className="sm:hidden"><WaveLines /></div>
         <div className="max-w-5xl mx-auto px-6 pt-20 pb-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
