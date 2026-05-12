@@ -111,7 +111,7 @@ export default function TierCycler() {
         Where will you land?
       </p>
 
-      <div className="relative" style={{ height: '242px' }}>
+      <div className="relative" style={{ height: '242px', willChange: 'transform', transform: 'translateZ(0)' }}>
         {prev !== null && (
           <TierCard
             key={`prev-${prev}`}

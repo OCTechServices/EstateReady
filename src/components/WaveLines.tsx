@@ -15,7 +15,7 @@ function generateWavePath(yBase: number, amplitude: number, frequency: number, p
 
 export default function WaveLines() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
       <svg
         width="100%"
         height="100%"
