@@ -43,7 +43,7 @@ const RIBBONS = [
 
 export default function HeroRibbons() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
       <svg
         className="absolute inset-0 w-full h-full"
         viewBox="0 0 1440 600"
@@ -64,9 +64,6 @@ export default function HeroRibbons() {
               <stop offset="100%" stopColor={r.color} stopOpacity={0} />
             </linearGradient>
           ))}
-          <filter id="hrf">
-            <feGaussianBlur stdDeviation="22" />
-          </filter>
         </defs>
 
         {RIBBONS.map((r, i) => (
@@ -76,7 +73,6 @@ export default function HeroRibbons() {
             fill="none"
             stroke={`url(#hrg${i})`}
             strokeWidth={r.width}
-            filter="url(#hrf)"
             style={{
               animationName: 'wave-drift',
               animationDuration: `${r.duration}s`,
