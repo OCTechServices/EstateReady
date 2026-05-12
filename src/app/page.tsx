@@ -335,6 +335,7 @@ export default function Home() {
                         top: '20px',
                         marginTop: '-4px',
                         left: '-5px',
+                        willChange: 'transform',
                         boxShadow: '0 0 8px rgba(181,147,90,0.9), 0 0 16px rgba(181,147,90,0.4)',
                         animationName: 'dot-travel',
                         animationDuration: '4s',

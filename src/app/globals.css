@@ -63,22 +63,20 @@ html {
 
 @keyframes dot-travel {
   0% {
-    left: -5px;
+    transform: translateX(0) scale(0.5);
     opacity: 0;
-    transform: scale(0.5);
   }
   4% {
+    transform: translateX(0) scale(1);
     opacity: 1;
-    transform: scale(1);
   }
   88% {
+    transform: translateX(56px) scale(1);
     opacity: 1;
-    transform: scale(1);
   }
   96%, 100% {
-    left: calc(100% + 5px);
+    transform: translateX(66px) scale(0.5);
     opacity: 0;
-    transform: scale(0.5);
   }
 }
 
