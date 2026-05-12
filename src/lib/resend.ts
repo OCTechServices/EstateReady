@@ -14,7 +14,7 @@ export async function sendMagicLink(email: string, token: string): Promise<void>
   const url = `${process.env.NEXT_PUBLIC_URL}/report/${token}`
 
   await getResend().emails.send({
-    from: 'EstateReady <reports@estateready.com>',
+    from: process.env.RESEND_FROM_EMAIL ?? 'EstateReady <reports@opcoretech.com>',
     to: email,
     subject: 'Your EstateReady Report is Ready',
     html: `
