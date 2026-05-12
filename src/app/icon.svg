@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="16" fill="#0F3020"/>
+  <text
+    x="16"
+    y="24"
+    text-anchor="middle"
+    font-family="'Brush Script MT', 'Segoe Script', cursive"
+    font-size="26"
+    fill="#B5935A"
+  >E</text>
+</svg>

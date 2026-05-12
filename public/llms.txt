@@ -1,0 +1,41 @@
+# EstateReady
+
+> A guided estate planning assessment that scores your readiness across 7 domains and produces a structured report you can bring to an attorney.
+
+EstateReady is a pay-per-report tool ($21 one-time) that helps individuals understand where their estate planning stands before engaging an attorney. It is not a law firm and does not provide legal advice.
+
+## What it does
+
+- 37-question intake across 7 estate planning domains
+- Scoring engine (0–100) with 4 tiers: Foundational, Developing, Complex, Urgent
+- AI-generated report with tier verdict, priority actions, and domain-level findings
+- Report delivered via a one-time magic link (valid 1 year)
+
+## Key pages
+
+- [Home](https://estateready.com): Marketing and intake entry point
+- [Sample Report](https://estateready.com/sample-report): Example Tier 3 report for a fictional individual
+- [Privacy Policy](https://estateready.com/privacy): Data collection and handling
+- [Disclaimer](https://estateready.com/disclaimer): Not legal advice, not a law firm
+
+## 7 Assessment domains
+
+1. Will & Trust
+2. Asset Titling
+3. Beneficiary Designations
+4. Healthcare Directives
+5. Financial Power of Attorney
+6. Guardian Designations
+7. Digital & Business Assets
+
+## Intended audience
+
+Individuals who have not yet started estate planning, or those who have partial plans in place and want to understand gaps before meeting with an attorney.
+
+## Pricing
+
+$21 per report · one-time · no subscription · no renewal
+
+## Contact
+
+support@estateready.com
