@@ -6,6 +6,7 @@ import { ReportRecommendations } from '@/lib/report'
 import PrintButton from '@/components/PrintButton'
 import ScoreRing from '@/components/ScoreRing'
 import WaveLines from '@/components/WaveLines'
+import CollapsibleSection from '@/components/CollapsibleSection'
 
 const TIER_THEME: Record<Tier, {
   bg: string
@@ -163,22 +164,16 @@ export default async function ReportPage({ params }: Props) {
         </div>
 
         {/* Narrative */}
-        <div className="bg-white rounded-2xl border border-gray-100 px-8 py-7">
-          <h2 className="text-xs font-semibold text-slate-mid uppercase tracking-widest mb-4">
-            Assessment Summary
-          </h2>
+        <CollapsibleSection title="Assessment Summary">
           <div className="space-y-3">
             {rec.narrative?.split('\n').filter(Boolean).map((para, i) => (
               <p key={i} className="text-gray-700 text-sm leading-relaxed">{para}</p>
             ))}
           </div>
-        </div>
+        </CollapsibleSection>
 
         {/* Priority actions */}
-        <div className="bg-white rounded-2xl border border-gray-100 px-8 py-7">
-          <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">
-            Priority Actions
-          </h2>
+        <CollapsibleSection title="Priority Actions">
           <div className="space-y-4">
             {rec.priority_actions?.map((item, i) => (
               <div key={i} className="flex gap-4">
@@ -192,15 +187,13 @@ export default async function ReportPage({ params }: Props) {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSection>
 
         {/* Domain findings */}
         {orderedFindings.length > 0 && (
-          <div className="bg-white rounded-2xl border border-gray-100 px-8 py-7">
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest">
-                Domain Findings
-              </h2>
+          <CollapsibleSection
+            title="Domain Findings"
+            headerRight={
               <div className="flex items-center gap-2">
                 {criticalFindings.length > 0 && (
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#7A2840]/10 border border-[#7A2840]/20">
@@ -221,7 +214,8 @@ export default async function ReportPage({ params }: Props) {
                   </span>
                 )}
               </div>
-            </div>
+            }
+          >
             <div className="space-y-3">
               {orderedFindings.map((finding, i) => {
                 const style = SEVERITY_STYLE[finding.severity] ?? SEVERITY_STYLE.info
@@ -242,7 +236,7 @@ export default async function ReportPage({ params }: Props) {
                 )
               })}
             </div>
-          </div>
+          </CollapsibleSection>
         )}
 
         {/* Attorney CTA */}
