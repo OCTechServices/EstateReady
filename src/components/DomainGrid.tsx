@@ -59,17 +59,16 @@ export default function DomainGrid() {
               { id: 'dg3', color: '#1C1C1E' },
             ].map(g => (
               <linearGradient key={g.id} id={g.id} gradientUnits="userSpaceOnUse" x1="600" y1="0" x2="300" y2="240">
-                <stop offset="0%" stopColor={g.color} stopOpacity="0.10" />
+                <stop offset="0%" stopColor={g.color} stopOpacity="0.30" />
                 <stop offset="100%" stopColor={g.color} stopOpacity="0" />
               </linearGradient>
             ))}
-            <filter id="dgf"><feGaussianBlur stdDeviation="14" /></filter>
           </defs>
           {[
-            { grad: 'dg0', path: 'M 620,-20 C 650,50 580,120 560,180 C 545,220 560,230 550,270', w: 90, dur: 17, delay: 0 },
-            { grad: 'dg1', path: 'M 520,-30 C 560,40 480,120 460,175 C 445,220 460,230 445,270', w: 75, dur: 21, delay: -5 },
-            { grad: 'dg2', path: 'M 420,-20 C 455,50 375,125 358,178 C 342,222 355,232 342,270', w: 65, dur: 19, delay: -9 },
-            { grad: 'dg3', path: 'M 320,-25 C 355,45 275,120 258,175 C 242,220 255,230 242,270', w: 55, dur: 23, delay: -3 },
+            { grad: 'dg0', path: 'M 620,-20 C 650,50 580,120 560,180 C 545,220 560,230 550,270', w: 18, dur: 17, delay: 0 },
+            { grad: 'dg1', path: 'M 520,-30 C 560,40 480,120 460,175 C 445,220 460,230 445,270', w: 14, dur: 21, delay: -5 },
+            { grad: 'dg2', path: 'M 420,-20 C 455,50 375,125 358,178 C 342,222 355,232 342,270', w: 10, dur: 19, delay: -9 },
+            { grad: 'dg3', path: 'M 320,-25 C 355,45 275,120 258,175 C 242,220 255,230 242,270', w: 7,  dur: 23, delay: -3 },
           ].map((r, i) => (
             <path
               key={i}
@@ -77,7 +76,6 @@ export default function DomainGrid() {
               fill="none"
               stroke={`url(#${r.grad})`}
               strokeWidth={r.w}
-              filter="url(#dgf)"
               style={{
                 animationName: 'wave-drift',
                 animationDuration: `${r.dur}s`,
