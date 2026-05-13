@@ -1,4 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+// TODO: Remove impact-site-verification once Impact affiliate verification is complete
+export const metadata: Metadata = {
+  other: {
+    'impact-site-verification': '77ac9963-85ba-4e7f-a245-2bf77a5eef5b',
+  },
+}
 import SectionNav from '@/components/SectionNav'
 import FloatingCTA from '@/components/FloatingCTA'
 import BackToTop from '@/components/BackToTop'

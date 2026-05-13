@@ -15,6 +15,10 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  // TODO: Remove impact-site-verification once Impact affiliate verification is complete
+  other: {
+    'impact-site-verification': '77ac9963-85ba-4e7f-a245-2bf77a5eef5b',
+  },
   title: 'EstateReady — Know Where Your Estate Planning Stands',
   description:
     'A 10-minute guided assessment that scores your estate planning readiness and prepares you for a smarter conversation with an attorney. Not legal advice.',
