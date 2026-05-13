@@ -162,7 +162,7 @@ export default async function ReportOGImage({ params }: Props) {
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#B5935A' }} />
-              <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12 }}>estateready.com</span>
+              <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12 }}>estateready.vercel.app</span>
             </div>
           </div>
         </div>
