@@ -59,6 +59,7 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
+      allow_promotion_codes: true,
       metadata: {
         submission_id: submission.id,
       },
