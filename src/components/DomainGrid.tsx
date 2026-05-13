@@ -112,15 +112,16 @@ export default function DomainGrid() {
               }}
             >
               <div
-                className="rounded-full shrink-0"
+                className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold"
                 style={{
-                  width: '6px',
-                  height: '6px',
-                  backgroundColor: isActive ? '#B5935A' : 'rgba(181,147,90,0.35)',
+                  backgroundColor: isActive ? '#B5935A' : 'rgba(181,147,90,0.12)',
+                  color: isActive ? 'white' : '#B5935A',
                   boxShadow: isActive ? '0 0 7px rgba(181,147,90,0.65)' : 'none',
-                  transition: 'background-color 0.35s, box-shadow 0.35s',
+                  transition: 'background-color 0.35s, box-shadow 0.35s, color 0.35s',
                 }}
-              />
+              >
+                {i + 1}
+              </div>
               <span
                 className="text-xs leading-snug"
                 style={{
