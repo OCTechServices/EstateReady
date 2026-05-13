@@ -551,7 +551,7 @@ export default function Home() {
           <div className="mt-10 pt-6 border-t border-cream-dark flex items-center gap-2">
             <span className="text-xs text-slate-mid">Know someone who needs this?</span>
             <ShareButton
-              url="https://estateready.com"
+              url="https://estateready.vercel.app"
               text="Know where your estate planning stands before you spend a dollar on attorney time. 40 questions · $21 · ~10 minutes."
             />
           </div>

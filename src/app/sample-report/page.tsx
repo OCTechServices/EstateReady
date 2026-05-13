@@ -18,7 +18,7 @@ export default function SampleReportPage() {
           </Link>
           <div className="flex items-center gap-4">
             <ShareButton
-              url="https://estateready.com/sample-report"
+              url="https://estateready.vercel.app/sample-report"
               text="See what an EstateReady assessment looks like — a real scoring report you can take to an attorney."
             />
             <Link href="/intake" className="bg-navy text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-navy-light transition-colors">
