@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'EstateReady — Know Where Your Estate Planning Stands',
     description:
-      'Know where your estate planning stands — before you spend a dollar on attorney time. 37 questions · 7 domains · $21 one-time.',
+      'Know where your estate planning stands — before you spend a dollar on attorney time. 40 questions · 7 domains · $21 one-time.',
     siteName: 'EstateReady',
     type: 'website',
   },

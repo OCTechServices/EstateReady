@@ -35,7 +35,7 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc list-outside ml-5 space-y-1.5 text-sm">
               <li><strong className="text-navy">Email address</strong> — used to deliver your report access link. We do not create user accounts; your email is the sole identifier tied to your submission.</li>
-              <li><strong className="text-navy">Questionnaire responses</strong> — the answers you provide across 37 questions in 7 domains. These are used to generate your assessment report.</li>
+              <li><strong className="text-navy">Questionnaire responses</strong> — the answers you provide across 40 questions in 7 domains. These are used to generate your assessment report.</li>
               <li><strong className="text-navy">Payment information</strong> — processed entirely by Stripe. We do not store card numbers or payment credentials.</li>
             </ul>
           </section>

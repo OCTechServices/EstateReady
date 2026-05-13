@@ -84,7 +84,7 @@ export default function OGImage() {
             A clear, honest picture of your estate planning — and exactly what to do next.
           </span>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            {['37 questions', '$21 one-time', '~10 minutes'].map((s, i) => (
+            {['40 questions', '$21 one-time', '~10 minutes'].map((s, i) => (
               <div key={s} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: i === 0 ? 0 : 20 }}>
                 <div style={{ display: 'flex', width: 3, height: 3, borderRadius: '50%', background: '#B5935A', marginRight: 7 }} />
                 <span style={{ color: 'rgba(255,255,255,0.70)', fontSize: 12 }}>{s}</span>

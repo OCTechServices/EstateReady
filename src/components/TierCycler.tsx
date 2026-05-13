@@ -142,7 +142,7 @@ export default function TierCycler() {
       </div>
 
       <p className="text-[10px] text-slate-mid/70 mt-4 leading-relaxed">
-        Scored across 37 questions · 7 domains · gap and complexity weighting
+        Scored across 40 questions · 7 domains · gap and complexity weighting
       </p>
     </div>
   )

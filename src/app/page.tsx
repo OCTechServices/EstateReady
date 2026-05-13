@@ -244,7 +244,7 @@ export default function Home() {
                   </svg>
                 ),
                 step: '01',
-                label: 'Answer 37 questions',
+                label: 'Answer 40 questions',
                 sub: '~10 min · no legal knowledge needed',
               },
               {
@@ -352,7 +352,7 @@ export default function Home() {
           {/* Mobile: vertical list */}
           <div className="sm:hidden space-y-6 mb-12">
             {[
-              { step: '01', label: 'Answer 37 questions', sub: '~10 min · no legal knowledge needed' },
+              { step: '01', label: 'Answer 40 questions', sub: '~10 min · no legal knowledge needed' },
               { step: '02', label: 'Pay once — $21', sub: 'Stripe checkout · no account needed' },
               { step: '03', label: 'AI scores your answers', sub: 'Scored and analyzed · tier assigned' },
               { step: '04', label: 'Report link emailed', sub: 'Secure link · accessible for 1 year' },
@@ -544,7 +544,7 @@ export default function Home() {
             <span className="text-xs text-slate-mid">Know someone who needs this?</span>
             <ShareButton
               url="https://estateready.com"
-              text="Know where your estate planning stands before you spend a dollar on attorney time. 37 questions · $21 · ~10 minutes."
+              text="Know where your estate planning stands before you spend a dollar on attorney time. 40 questions · $21 · ~10 minutes."
             />
           </div>
         </div>

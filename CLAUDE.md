@@ -122,7 +122,7 @@ and confirm all three are accurate before we sign off.
 ## 10. Open Items
 - [x] Define data model: Submission, QuestionnaireResponse, Report — no auth, email-only
 - [x] Design payment gate flow: Stripe Checkout → webhook → report unlock via magic link (Resend, 1-year token)
-- [x] Draft intake questionnaire: 37 questions · 7 domains · 4-tier scoring model
+- [x] Draft intake questionnaire: 40 questions · 7 domains · 4-tier scoring model
 - [x] Scaffold Next.js project with Vercel deployment
 - [x] Implement questionnaire flow (domain-by-domain, progress indicator, domain transitions)
 - [x] Implement scoring engine

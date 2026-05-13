@@ -93,7 +93,7 @@ export default function DomainGrid() {
           The 7 domains covered in the assessment
         </p>
         <span className="inline-flex self-start text-[10px] font-semibold text-gold uppercase tracking-widest bg-gold/10 px-2.5 py-1 rounded-full shrink-0">
-          37 questions
+          40 questions
         </span>
       </div>
 
