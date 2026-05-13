@@ -106,7 +106,7 @@ export default function TierCycler() {
   }, [])
 
   return (
-    <div className="hidden lg:block">
+    <div>
       <p className="text-[10px] font-semibold text-gold uppercase tracking-widest mb-4">
         Where will you land?
       </p>

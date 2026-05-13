@@ -227,7 +227,6 @@ export default function Home() {
       {/* How it works */}
       <section id="how-it-works" className="bg-cream border-b border-cream-dark scroll-mt-28 2xl:scroll-mt-20">
         <div className="max-w-4xl mx-auto px-6 py-16">
-          <div className="flex justify-end mb-6"><BackToTop /></div>
           <p className="text-xs font-semibold text-gold uppercase tracking-widest mb-2">How it works</p>
           <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-3xl font-bold text-navy mb-12 leading-snug">
             Five steps. About ten minutes.
@@ -376,6 +375,7 @@ export default function Home() {
 
           {/* What each domain covers */}
           <DomainGrid />
+          <div className="flex justify-end mt-6"><BackToTop /></div>
         </div>
       </section>
 
