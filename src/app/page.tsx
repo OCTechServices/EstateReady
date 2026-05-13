@@ -24,7 +24,7 @@ export default function Home() {
             EstateReady
           </a>
           <div className="flex items-center gap-4">
-            <Link href="/sample-report" className="text-sm text-slate-mid hover:text-navy transition-colors hidden sm:block">
+            <Link href="/sample-report" className="text-sm text-slate-mid hover:text-navy transition-colors">
               Sample Report
             </Link>
             <Link href="/intake" className="bg-navy text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-navy-light transition-colors">
