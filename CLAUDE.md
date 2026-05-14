@@ -131,10 +131,18 @@ and confirm all three are accurate before we sign off.
 - [x] Integrate Resend for magic link delivery
 - [x] Build report view (tier + recommendations)
 - [x] Front page disclaimer: honest, attorney-voice transparency statement (not legal advice)
-- [ ] Deploy schema to Supabase
-- [ ] Create Stripe product + price ($21)
-- [ ] Set all env vars in Vercel
-- [ ] Deploy to Vercel + verify end-to-end flow
-- [ ] Add favicon (SVG) and OG image
-- [ ] Add /privacy and /disclaimer pages
-- [ ] Add llms.txt and robots.txt
+- [x] Deploy schema to Supabase + RLS enabled on all tables
+- [x] Create Stripe product + price ($21) — live keys active
+- [x] Set all env vars in Vercel
+- [x] Deploy to Vercel + verify end-to-end flow
+- [x] Add favicon (SVG) and OG image
+- [x] Add /privacy and /disclaimer pages
+- [x] Add llms.txt and robots.txt
+- [x] GitHub auto-deploy connected (OCTechServices/EstateReady → main)
+- [x] Admin resend-email endpoint (/api/admin/resend-email)
+- [x] Promo codes enabled on Stripe Checkout
+- [x] Mobile UX — collapsible report sections, Safari animation fixes
+- [ ] Remove Impact affiliate meta tag once verified (layout.tsx + page.tsx)
+- [ ] Real $21 paid transaction (no coupon) end-to-end verification
+- [ ] Trust & Will affiliate approval + add referral link to report and email
+- [ ] Partner portal — Phase 2
