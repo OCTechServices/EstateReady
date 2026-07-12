@@ -138,6 +138,7 @@ export default function QuickCheck() {
                 fontSize: '1rem',
                 fontWeight: 600,
                 border: 'none',
+                borderBottom: allAnswered ? '3px solid #B5935A' : 'none',
               }}
             >
               See My Preliminary Finding
@@ -172,7 +173,7 @@ export default function QuickCheck() {
             <div className="flex flex-col sm:flex-row gap-4 items-start">
               <Link
                 href="/intake"
-                style={{ backgroundColor: '#1A4A2E', color: 'white', padding: '14px 32px', fontSize: '1rem', fontWeight: 600 }}
+                style={{ backgroundColor: '#1A4A2E', color: 'white', padding: '14px 32px', fontSize: '1rem', fontWeight: 600, borderBottom: '3px solid #B5935A' }}
                 className="hover:bg-navy-light transition-colors text-center"
               >
                 Begin Full Assessment — $21

@@ -75,12 +75,13 @@ export default function Home() {
               <Link
                 href="/intake"
                 className="bg-white text-navy text-lg font-semibold px-8 py-4 hover:bg-cream transition-colors text-center"
+                style={{ borderBottom: '3px solid #B5935A' }}
               >
                 Begin My Assessment — $21
               </Link>
               <Link
                 href="/sample-report"
-                className="text-white/80 text-base font-medium underline underline-offset-4 hover:text-white transition-colors sm:pt-3"
+                className="text-white text-base font-semibold underline underline-offset-4 hover:text-white/70 transition-colors sm:pt-3"
               >
                 View a sample report first →
               </Link>
@@ -141,7 +142,19 @@ export default function Home() {
       </section>
 
       {/* ── Sample Report ───────────────────────────────────────────── */}
-      <section style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }}>
+      {/*
+        Photo: Unsplash photo-1481627834876-b7833e8f5570 (library with Edison bulbs)
+        Cream overlay at 90% — very subtle background texture, does not compete with content.
+      */}
+      <section
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1600&h=900&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          borderBottom: '1px solid #EDE9DC',
+        }}
+      >
+        <div style={{ backgroundColor: 'rgba(250, 248, 242, 0.92)', width: '100%', borderBottom: '1px solid #EDE9DC' }}>
         <div className="max-w-3xl mx-auto px-6 py-14">
 
           <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-3 leading-snug">
@@ -251,11 +264,16 @@ export default function Home() {
             {/* Report footer */}
             <div style={{ borderTop: '1px solid #EDE9DC', backgroundColor: '#F5F0E8' }} className="px-6 py-4 flex items-center justify-between gap-4">
               <p className="text-sm text-slate-mid">Print it. Email it. Bring it to your attorney.</p>
-              <Link href="/sample-report" className="text-sm font-semibold text-navy underline underline-offset-2 hover:text-navy-light whitespace-nowrap">
+              <Link
+                href="/sample-report"
+                className="text-sm font-semibold text-navy whitespace-nowrap px-4 py-2 hover:bg-navy hover:text-white transition-colors"
+                style={{ border: '1px solid #1A4A2E' }}
+              >
                 See full sample report →
               </Link>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -352,7 +370,19 @@ export default function Home() {
       </section>
 
       {/* ── Final CTA ───────────────────────────────────────────────── */}
-      <section className="bg-navy-dark">
+      {/*
+        Photo: Unsplash photo-1570129477492-45c003edd2be (classic New England home, green lawn)
+        Dark forest green overlay at 82% — the house silhouette reads through warmly.
+        "This is what you're protecting."
+      */}
+      <section
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1600&h=900&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 30%',
+        }}
+      >
+        <div style={{ backgroundColor: 'rgba(10, 38, 22, 0.84)', width: '100%' }}>
         <div className="max-w-3xl mx-auto px-6 py-20">
           <h2 style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.15 }} className="text-5xl font-bold text-white mb-4">
             Ten minutes to understand what you&apos;ve been putting off for years.
@@ -362,7 +392,11 @@ export default function Home() {
             far better first conversation with an estate planning attorney.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/intake" className="bg-white text-navy px-8 py-4 font-semibold hover:bg-cream transition-colors text-lg text-center">
+            <Link
+              href="/intake"
+              className="bg-white text-navy px-8 py-4 font-semibold hover:bg-cream transition-colors text-lg text-center"
+              style={{ borderBottom: '3px solid #B5935A' }}
+            >
               Begin My Assessment — $21
             </Link>
             <Link href="/sample-report" className="border border-white/40 text-white px-8 py-4 font-medium hover:bg-white/10 transition-colors text-base text-center">
@@ -372,6 +406,7 @@ export default function Home() {
           <p className="text-sm text-white/50 mt-6">
             One-time · No subscription · Not legal advice · Secure payment via Stripe
           </p>
+        </div>
         </div>
       </section>
 
