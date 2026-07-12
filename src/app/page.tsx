@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 }
 
 import FaqAccordion from '@/components/FaqAccordion'
+import QuickCheck from '@/components/QuickCheck'
 
 export default function Home() {
   return (
@@ -123,6 +124,19 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Quick Check ─────────────────────────────────────────────── */}
+      <section style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }}>
+        <div className="max-w-3xl mx-auto px-6 py-14">
+          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-3 leading-snug">
+            How prepared are you?
+          </h2>
+          <p className="text-lg text-slate-mid mb-8">
+            Three questions. Thirty seconds. A preliminary read on where you stand.
+          </p>
+          <QuickCheck />
         </div>
       </section>
 
