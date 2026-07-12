@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will & Estate Ready — Facebook Cover</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 820px;
+      height: 312px;
+      overflow: hidden;
+      background: #0F3020;
+    }
+
+    .cover {
+      width: 820px;
+      height: 312px;
+      background: linear-gradient(135deg, #0F3020 0%, #1A4A2E 55%, #0D2A1C 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 44px 56px;
+      overflow: hidden;
+    }
+
+    /* Radial warmth glow — left-center */
+    .cover::before {
+      content: '';
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(181,147,90,0.07) 0%, transparent 65%);
+      top: 50%;
+      left: 28%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    /* Corner brackets */
+    .corner {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      opacity: 0.3;
+    }
+    .corner-tl { top: 18px; left: 18px; border-top: 1.5px solid #B5935A; border-left: 1.5px solid #B5935A; }
+    .corner-tr { top: 18px; right: 18px; border-top: 1.5px solid #B5935A; border-right: 1.5px solid #B5935A; }
+    .corner-bl { bottom: 18px; left: 18px; border-bottom: 1.5px solid #B5935A; border-left: 1.5px solid #B5935A; }
+    .corner-br { bottom: 18px; right: 18px; border-bottom: 1.5px solid #B5935A; border-right: 1.5px solid #B5935A; }
+
+    /* Gold vertical accent */
+    .accent-bar {
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(180deg, transparent, #B5935A 40%, #B5935A 60%, transparent);
+      margin-right: 36px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* Left content block */
+    .content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3.5px;
+      color: rgba(181,147,90,0.65);
+      margin-bottom: 14px;
+    }
+
+    .wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 46px;
+      font-weight: 700;
+      color: #FAF8F2;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .wordmark .amp {
+      color: rgba(250,248,242,0.45);
+      font-weight: 400;
+    }
+
+    .wordmark .highlight {
+      color: #D4B483;
+    }
+
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(250,248,242,0.5);
+      letter-spacing: 0.2px;
+      line-height: 1.5;
+    }
+
+    /* Right block */
+    .right-block {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+      padding-left: 40px;
+      flex-shrink: 0;
+    }
+
+    /* Document icon */
+    .doc-icon {
+      width: 44px;
+      height: 52px;
+      border: 1.5px solid rgba(181,147,90,0.35);
+      border-radius: 3px;
+      position: relative;
+      background: rgba(181,147,90,0.04);
+    }
+    .doc-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 13px;
+      height: 13px;
+      border-left: 1.5px solid rgba(181,147,90,0.35);
+      border-bottom: 1.5px solid rgba(181,147,90,0.35);
+      background: #0F3020;
+      border-radius: 0 2px 0 0;
+    }
+    .doc-lines {
+      position: absolute;
+      top: 18px;
+      left: 8px;
+      right: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .doc-lines span {
+      display: block;
+      height: 1px;
+      background: rgba(181,147,90,0.25);
+      border-radius: 1px;
+    }
+    .doc-lines span:last-child { width: 60%; }
+
+    /* Price pill */
+    .pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(181,147,90,0.25);
+      color: rgba(181,147,90,0.65);
+      background: rgba(181,147,90,0.05);
+      white-space: nowrap;
+    }
+
+    .url {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(181,147,90,0.45);
+      letter-spacing: 0.8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <div class="accent-bar"></div>
+
+    <div class="content">
+      <p class="eyebrow">Estate Planning &middot; Made Accessible</p>
+      <h1 class="wordmark">Will <span class="amp">&amp;</span> <span class="highlight">Estate</span> Ready</h1>
+      <p class="tagline">Know where your estate stands &mdash; before it's too late.<br>10 minutes. Professional score. Clear next steps.</p>
+    </div>
+
+    <div class="right-block">
+      <div class="doc-icon">
+        <div class="doc-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="pill">$21 &middot; 10 Minutes</div>
+      <p class="url">willestateready.com</p>
+    </div>
+  </div>
+</body>
+</html>

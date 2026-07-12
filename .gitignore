@@ -42,3 +42,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# content engine
+scripts/content-engine/.env
+scripts/content-engine/venv/
+scripts/content-engine/output/
+scripts/content-engine/fonts/
+scripts/content-engine/__pycache__/

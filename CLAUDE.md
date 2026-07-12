@@ -85,7 +85,7 @@ npm run lint      # ESLint
 - [ ] No lint errors
 - [ ] No secrets exposed
 - [ ] Security checklist passed (see Section 6)
-- [ ] Change is small and reasonably sized
+- [ ] Change is small and reviewable
 - [ ] Existing patterns respected
 - [ ] If public-facing site: AEO patterns applied (llms.txt at domain root, AI crawlers allowed in robots.txt, Quick Answer block on key pages, question-format H2s, FAQ schema where relevant)
 

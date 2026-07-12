@@ -19,19 +19,19 @@ export const metadata: Metadata = {
   other: {
     'impact-site-verification': '77ac9963-85ba-4e7f-a245-2bf77a5eef5b',
   },
-  title: 'EstateReady — Know Where Your Estate Planning Stands',
+  title: 'Will & Estate Ready — Know Where Your Estate Planning Stands',
   description:
-    'A 10-minute guided assessment that scores your estate planning readiness and prepares you for a smarter conversation with an attorney. Not legal advice.',
+    'A 10-minute assessment that scores your estate planning readiness across 7 areas and prepares you for a smarter conversation with an attorney. Not legal advice. $21.',
   openGraph: {
-    title: 'EstateReady — Know Where Your Estate Planning Stands',
+    title: 'Will & Estate Ready — Know Where Your Estate Planning Stands',
     description:
-      'Know where your estate planning stands — before you spend a dollar on attorney time. 40 questions · 7 domains · $21 one-time.',
-    siteName: 'EstateReady',
+      'Know where your estate planning stands — before you spend a dollar on attorney time. 40 questions · 7 areas · $21 one-time.',
+    siteName: 'Will & Estate Ready',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'EstateReady — Know Where Your Estate Planning Stands',
+    title: 'Will & Estate Ready — Know Where Your Estate Planning Stands',
     description:
       'Know where your estate planning stands — before you spend a dollar on attorney time.',
   },
