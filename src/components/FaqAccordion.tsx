@@ -6,7 +6,7 @@ import type { ReactNode } from 'react'
 const FAQS: { q: string; a: ReactNode }[] = [
   {
     q: 'Is this legal advice?',
-    a: <>No. EstateReady is not a law firm and does not provide legal advice. <strong className="text-navy">We help you understand your own situation clearly</strong> — so that when you do sit down with an attorney, you&apos;re not starting from zero.</>,
+    a: <>No. Will &amp; Estate Ready is not a law firm and does not provide legal advice. <strong className="text-navy">We help you understand your own situation clearly</strong> — so that when you do sit down with an attorney, you&apos;re not starting from zero.</>,
   },
   {
     q: 'Is $21 the full cost? No subscription?',
@@ -18,7 +18,7 @@ const FAQS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Do I need to already have an attorney?',
-    a: <>No. Most people use EstateReady before they have one — to understand what they actually need before they start making calls.</>,
+    a: <>No. Most people use Will &amp; Estate Ready before they have one — to understand what they actually need before they start making calls.</>,
   },
   {
     q: 'What if I don\'t know the answers to some questions?',
