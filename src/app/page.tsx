@@ -12,19 +12,19 @@ import FaqAccordion from '@/components/FaqAccordion'
 
 export default function Home() {
   return (
-    <div id="top" className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: '#FAF8F2' }}>
 
       {/* ── Nav ─────────────────────────────────────────────────────── */}
-      <header className="bg-white border-b border-cream-dark sticky top-0 z-20">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="#top" style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl font-bold text-navy">
+      <header style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }} className="sticky top-0 z-20">
+        <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#top" style={{ fontFamily: 'var(--font-playfair)' }} className="text-lg font-bold text-navy">
             Will &amp; Estate Ready
           </a>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <Link href="/sample-report" className="text-sm text-slate-mid hover:text-navy transition-colors hidden sm:block">
               View Sample Report
             </Link>
-            <Link href="/intake" className="bg-navy text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-navy-light transition-colors">
+            <Link href="/intake" className="text-sm font-semibold text-navy border border-navy px-4 py-2 hover:bg-navy hover:text-white transition-colors">
               Begin Assessment
             </Link>
           </div>
@@ -32,65 +32,111 @@ export default function Home() {
       </header>
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-cream-dark">
-        <div className="max-w-4xl mx-auto px-6 pt-16 pb-14">
+      <section style={{ backgroundColor: '#FAF8F2' }}>
+        <div className="max-w-3xl mx-auto px-6 pt-16 pb-14">
 
-          <h1 style={{ fontFamily: 'var(--font-playfair)' }} className="text-5xl sm:text-6xl font-bold text-navy leading-tight mb-6 max-w-3xl">
-            Know where your estate planning stands — before you spend a dollar on attorney time.
+          <p className="text-sm text-slate-mid mb-8 tracking-wide">
+            Estate Planning Assessment &nbsp;·&nbsp; For families who want to be prepared
+          </p>
+
+          <h1
+            style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1 }}
+            className="text-6xl sm:text-7xl font-bold text-navy mb-8"
+          >
+            If something happened to you today, would your family know what to do?
           </h1>
 
-          <p className="text-lg text-slate-mid leading-relaxed max-w-2xl mb-4">
-            Answer 40 plain-language questions. Receive a personal report that scores your
-            estate planning across 7 areas and tells you exactly what you need to do first.
-          </p>
-          <p className="text-base text-slate-mid border-l-2 border-gold pl-4 mb-10 max-w-xl leading-relaxed">
-            Built around the questions estate planning attorneys ask every new client.
-            Not legal advice. A preparation tool.
+          <p className="text-xl text-slate-mid leading-relaxed mb-4" style={{ maxWidth: '56ch' }}>
+            Most people don&apos;t have an answer to that question.
+            Not because they don&apos;t care — but because no one ever showed them
+            how to find out without first hiring an attorney.
           </p>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row items-start gap-4 mb-8">
-            <Link
-              href="/intake"
-              className="bg-navy text-white px-8 py-4 rounded-lg font-semibold hover:bg-navy-light transition-colors text-lg text-center"
-            >
-              Start My Assessment — $21
-            </Link>
-            <Link
-              href="/sample-report"
-              className="text-navy text-base font-medium underline underline-offset-4 hover:text-navy-light transition-colors sm:pt-3.5"
-            >
-              View a Sample Report →
-            </Link>
+          <p className="text-lg text-slate-mid leading-relaxed mb-12" style={{ maxWidth: '52ch' }}>
+            Will &amp; Estate Ready changes that. In about ten minutes, you answer
+            40 plain-language questions and receive a personal report that tells you
+            exactly where your estate planning stands — and what to do about it.
+          </p>
+
+          <div style={{ borderTop: '1px solid #EDE9DC', borderBottom: '1px solid #EDE9DC' }} className="py-8 mb-8">
+            <p className="text-sm text-slate-mid mb-5">
+              <strong className="text-navy">One-time cost: $21</strong>
+              &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; No account required &nbsp;·&nbsp; About 10 minutes
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 items-start">
+              <Link
+                href="/intake"
+                className="bg-navy text-white text-lg font-semibold px-8 py-4 hover:bg-navy-light transition-colors text-center"
+              >
+                Begin My Assessment — $21
+              </Link>
+              <Link
+                href="/sample-report"
+                className="text-navy text-base font-medium underline underline-offset-4 hover:text-navy-light transition-colors sm:pt-3"
+              >
+                View a sample report first →
+              </Link>
+            </div>
+            <p className="text-sm text-slate-mid mt-5">
+              Not legal advice &nbsp;·&nbsp; Payment via Stripe &nbsp;·&nbsp; Report delivered by email
+            </p>
           </div>
 
-          {/* Process — inline, no dedicated section needed */}
-          <div className="flex flex-wrap gap-x-8 gap-y-2 mb-8 text-sm text-slate-mid">
-            <span><strong className="text-navy font-semibold">1.</strong> Answer 40 questions (~10 min)</span>
-            <span><strong className="text-navy font-semibold">2.</strong> Pay once — $21 via Stripe</span>
-            <span><strong className="text-navy font-semibold">3.</strong> Receive your report by email</span>
-            <span><strong className="text-navy font-semibold">4.</strong> Share with your attorney</span>
-          </div>
+        </div>
+      </section>
 
-          <p className="text-sm text-slate-mid">
-            Not legal advice &nbsp;·&nbsp; No account required &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; Secure payment via Stripe
-          </p>
+      {/* ── Three facts ─────────────────────────────────────────────── */}
+      <section className="bg-white" style={{ borderTop: '1px solid #EDE9DC', borderBottom: '1px solid #EDE9DC' }}>
+        <div className="max-w-3xl mx-auto px-6 py-14">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 sm:divide-x divide-cream-dark">
+            {[
+              {
+                stat: '3 in 4',
+                body: 'American households have no will, no trust, and no estate plan of any kind.',
+                source: 'Caring.com, 2025',
+              },
+              {
+                stat: '16 months',
+                body: 'The average time an estate without a plan spends going through probate court.',
+                source: 'EstateExec',
+              },
+              {
+                stat: '$400 / hr',
+                body: 'Average estate attorney rate — before they can even begin to tell you what you need.',
+                source: 'National average',
+              },
+            ].map((item) => (
+              <div key={item.stat} className="sm:px-10 first:sm:pl-0 last:sm:pr-0">
+                <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-5xl font-bold text-navy mb-3 leading-none">
+                  {item.stat}
+                </p>
+                <p className="text-base text-slate-mid leading-relaxed mb-2">{item.body}</p>
+                <p className="text-xs text-slate-mid/60">— {item.source}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Sample Report ───────────────────────────────────────────── */}
-      <section className="bg-cream border-b border-cream-dark">
-        <div className="max-w-4xl mx-auto px-6 py-14">
-          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-3xl font-bold text-navy mb-2 leading-snug">
+      <section style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }}>
+        <div className="max-w-3xl mx-auto px-6 py-14">
+
+          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-3 leading-snug">
             Here is what you receive.
           </h2>
-          <p className="text-base text-slate-mid mb-8 max-w-xl leading-relaxed">
-            Every finding is tied to your specific answers. Every recommendation explains why it matters.
+          <p className="text-lg text-slate-mid leading-relaxed mb-8" style={{ maxWidth: '52ch' }}>
+            A personal report, delivered by email, that scores your estate planning
+            across 7 areas and tells you exactly what to do — in plain English.
+            The following is a sample based on a fictional individual.
           </p>
 
-          <div className="rounded-lg border border-gray-200 overflow-hidden shadow-sm">
-            <div className="bg-gold/10 border-b border-gold/20 px-6 py-2.5">
-              <p className="text-xs font-semibold text-gold">Sample Report · Fictional individual · For illustration only</p>
+          <div style={{ border: '1px solid #D1C9B8', overflow: 'hidden' }}>
+            {/* Sample label */}
+            <div style={{ backgroundColor: '#F5F0E8', borderBottom: '1px solid #D1C9B8' }} className="px-6 py-3">
+              <p className="text-xs font-semibold text-slate-mid uppercase tracking-widest">
+                Sample Report &nbsp;·&nbsp; Fictional individual &nbsp;·&nbsp; For illustration only
+              </p>
             </div>
 
             {/* Tier banner */}
@@ -160,15 +206,15 @@ export default function Home() {
                       finding: 'Life insurance owned personally — creates unnecessary estate tax inclusion risk at your asset level.',
                     },
                   ].map((f, i) => {
-                    const style = f.severity === 'critical'
+                    const s = f.severity === 'critical'
                       ? { bar: 'bg-[#7A2840]', badge: 'bg-[#7A2840] text-white', label: 'Critical', bg: 'bg-[#FDF2F4] border-[#E8C4CC]' }
                       : { bar: 'bg-gold',       badge: 'bg-gold text-white',       label: 'Caution',  bg: 'bg-gold/10 border-gold/25' }
                     return (
-                      <div key={i} className={`rounded-lg border flex overflow-hidden ${style.bg}`}>
-                        <div className={`w-1.5 shrink-0 ${style.bar}`} />
+                      <div key={i} className={`border flex overflow-hidden ${s.bg}`}>
+                        <div className={`w-1.5 shrink-0 ${s.bar}`} />
                         <div className="px-4 py-3">
                           <div className="flex items-center gap-2 mb-1">
-                            <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded ${style.badge}`}>{style.label}</span>
+                            <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 ${s.badge}`}>{s.label}</span>
                             <span className="text-sm font-semibold text-navy">{f.label}</span>
                           </div>
                           <p className="text-sm text-slate-mid leading-relaxed">{f.finding}</p>
@@ -180,9 +226,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="border-t border-cream-dark bg-cream/50 px-6 py-4 flex items-center justify-between gap-4">
+            {/* Report footer */}
+            <div style={{ borderTop: '1px solid #EDE9DC', backgroundColor: '#F5F0E8' }} className="px-6 py-4 flex items-center justify-between gap-4">
               <p className="text-sm text-slate-mid">Print it. Email it. Bring it to your attorney.</p>
-              <Link href="/sample-report" className="text-sm font-semibold text-navy underline underline-offset-2 hover:text-navy-light transition-colors whitespace-nowrap">
+              <Link href="/sample-report" className="text-sm font-semibold text-navy underline underline-offset-2 hover:text-navy-light whitespace-nowrap">
                 See full sample report →
               </Link>
             </div>
@@ -190,66 +237,82 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Who it's for ────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-cream-dark">
-        <div className="max-w-4xl mx-auto px-6 py-14">
-          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-2xl font-bold text-navy mb-8 max-w-xl leading-snug">
-            You don&apos;t need to have it figured out to begin.
+      {/* ── Does this describe you ──────────────────────────────────── */}
+      <section className="bg-white" style={{ borderBottom: '1px solid #EDE9DC' }}>
+        <div className="max-w-3xl mx-auto px-6 py-14">
+
+          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-10 leading-snug">
+            Does this describe you?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "I don't know if my parents have anything in place. I don't even know what questions to ask.",
-                who: 'Adult children helping aging parents',
-              },
-              {
-                quote: "I own a home and have kids. I keep meaning to get this sorted. I just don't know where to start.",
-                who: 'Homeowners with a family',
-              },
-              {
-                quote: "I want to get my affairs in order before things get complicated. What do I actually need to do?",
-                who: 'Anyone approaching retirement',
-              },
-            ].map((p) => (
-              <div key={p.who} className="border-l-2 border-gold pl-5 py-1">
-                <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-navy text-lg leading-snug font-medium mb-3">
-                  &ldquo;{p.quote}&rdquo;
-                </p>
-                <p className="text-xs font-semibold text-slate-mid uppercase tracking-wide">{p.who}</p>
-              </div>
-            ))}
+
+          <div className="space-y-8">
+            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
+              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
+                &ldquo;I know I should have a will. I&apos;ve been saying that for years.
+                I just don&apos;t know what I actually need or where to start.&rdquo;
+              </p>
+              <p className="text-sm text-slate-mid">Homeowners with a spouse or family</p>
+            </div>
+
+            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
+              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
+                &ldquo;My parents are getting older and I have no idea what they have
+                in place — or what questions to even ask them.&rdquo;
+              </p>
+              <p className="text-sm text-slate-mid">Adult children helping aging parents</p>
+            </div>
+
+            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
+              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
+                &ldquo;I want to get my affairs in order before I retire.
+                I just don&apos;t want my family to have to figure it all out later.&rdquo;
+              </p>
+              <p className="text-sm text-slate-mid">Anyone approaching or in retirement</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── What we owe you ─────────────────────────────────────────── */}
-      <section className="bg-cream border-b border-cream-dark">
-        <div className="max-w-4xl mx-auto px-6 py-14">
-          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-2xl font-bold text-navy mb-8">
-            What we will — and won&apos;t — tell you.
+      {/* ── Before you begin ────────────────────────────────────────── */}
+      <section style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }}>
+        <div className="max-w-3xl mx-auto px-6 py-14">
+
+          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-3 leading-snug">
+            Before you begin.
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <p className="text-lg text-slate-mid mb-10">Four things you should know.</p>
+
+          <div className="space-y-8">
             {[
               {
-                title: 'Not legal advice — ever',
-                body: 'Will & Estate Ready is not a law firm. We do not represent you. We give you an honest picture of your situation, clearly scored and explained. What you do with it is your decision.',
+                n: '1.',
+                title: 'This is not legal advice.',
+                body: 'Will & Estate Ready is not a law firm and does not represent you in any way. What we provide is an honest, documented picture of where your estate planning stands — scored clearly and explained in plain English. What you do with it is your decision.',
               },
               {
-                title: '$21, one time. No subscription.',
-                body: 'One payment. One report. No renewal, no account, no ongoing charges. Your report is yours for one year via a secure link sent to your email.',
+                n: '2.',
+                title: 'The cost is $21, one time. No subscription, no renewal.',
+                body: 'You pay once and receive one report, accessible for one year via a secure link sent to your email. There is no account to create, no profile to maintain, and no ongoing charges of any kind.',
               },
               {
+                n: '3.',
                 title: 'Your payment is handled by Stripe.',
-                body: 'We never see or store your card details. Stripe processes all payments. It is the same technology used by Amazon, Target, and your bank.',
+                body: 'We never see or store your card details. Stripe processes all payments securely — the same technology used by Amazon, Target, and major financial institutions. You will see "Will & Estate Ready" on your statement.',
               },
               {
+                n: '4.',
                 title: 'Your information stays private.',
-                body: 'Your answers are used to generate your report — nothing else. We do not sell your data, share it, or use it for marketing. Ever.',
+                body: 'Your answers are used only to generate your report. We do not sell your data, share it with third parties, or use it to market to you. Your responses are not stored beyond what is required to deliver your report.',
               },
             ].map((item) => (
-              <div key={item.title} className="bg-white rounded-lg border border-cream-dark px-6 py-5">
-                <p className="text-navy text-base font-semibold mb-1">{item.title}</p>
-                <p className="text-slate-mid text-sm leading-relaxed">{item.body}</p>
+              <div key={item.n} className="flex gap-6">
+                <span style={{ fontFamily: 'var(--font-playfair)' }} className="text-2xl font-bold text-gold shrink-0 mt-0.5 w-8">
+                  {item.n}
+                </span>
+                <div style={{ borderTop: '1px solid #EDE9DC' }} className="flex-1 pt-6">
+                  <p className="text-lg font-semibold text-navy mb-2">{item.title}</p>
+                  <p className="text-base text-slate-mid leading-relaxed">{item.body}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -257,9 +320,9 @@ export default function Home() {
       </section>
 
       {/* ── FAQ ─────────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-cream-dark">
+      <section className="bg-white" style={{ borderBottom: '1px solid #EDE9DC' }}>
         <div className="max-w-3xl mx-auto px-6 py-14">
-          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-2xl font-bold text-navy mb-8">
+          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-10">
             Common questions
           </h2>
           <FaqAccordion />
@@ -269,37 +332,35 @@ export default function Home() {
       {/* ── Final CTA ───────────────────────────────────────────────── */}
       <section className="bg-navy-dark">
         <div className="max-w-3xl mx-auto px-6 py-20">
-          <div className="max-w-xl">
-            <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-white mb-3 leading-tight">
-              Ten minutes to understand what you&apos;ve been putting off for years.
-            </h2>
-            <p className="text-white/80 text-lg leading-relaxed mb-8">
-              $21. One report. A clearer picture of your situation — and a better first conversation with an attorney.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="/intake" className="bg-white text-navy px-7 py-4 rounded-lg font-semibold hover:bg-cream transition-colors text-lg text-center">
-                Start My Assessment — $21
-              </Link>
-              <Link href="/sample-report" className="border border-white/30 text-white px-7 py-4 rounded-lg font-medium hover:bg-white/10 transition-colors text-base text-center">
-                View a Sample Report
-              </Link>
-            </div>
-            <p className="text-sm text-white/50 mt-5">
-              One-time · No subscription · Not legal advice · Secure payment via Stripe
-            </p>
+          <h2 style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.15 }} className="text-5xl font-bold text-white mb-4">
+            Ten minutes to understand what you&apos;ve been putting off for years.
+          </h2>
+          <p className="text-xl text-white/80 leading-relaxed mb-10 max-w-lg">
+            $21. One report. A clear picture of where your family stands — and a
+            far better first conversation with an estate planning attorney.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/intake" className="bg-white text-navy px-8 py-4 font-semibold hover:bg-cream transition-colors text-lg text-center">
+              Begin My Assessment — $21
+            </Link>
+            <Link href="/sample-report" className="border border-white/40 text-white px-8 py-4 font-medium hover:bg-white/10 transition-colors text-base text-center">
+              View a Sample Report
+            </Link>
           </div>
+          <p className="text-sm text-white/50 mt-6">
+            One-time · No subscription · Not legal advice · Secure payment via Stripe
+          </p>
         </div>
       </section>
 
       {/* ── Footer ──────────────────────────────────────────────────── */}
-      <footer className="bg-navy-dark border-t border-white/10 px-6 py-8">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/60">
-          <div className="text-center sm:text-left">
-            <span style={{ fontFamily: 'var(--font-playfair)' }} className="text-white font-semibold block mb-1">Will &amp; Estate Ready</span>
-            <span>An estate planning readiness assessment. Not a law firm.</span>
+      <footer className="bg-navy-dark" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-white font-semibold mb-1">Will &amp; Estate Ready</p>
+            <p className="text-sm text-white/50">An estate planning readiness assessment. Not a law firm.</p>
           </div>
-          <span className="text-xs">Not legal advice · For informational purposes only</span>
-          <div className="flex gap-4 text-xs">
+          <div className="flex items-center gap-6 text-sm text-white/50">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
             <Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
           </div>
