@@ -31,57 +31,65 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: '#FAF8F2' }}>
-        <div className="max-w-3xl mx-auto px-6 pt-16 pb-14">
+      {/* ── Hero — full-bleed photo ─────────────────────────────────── */}
+      {/*
+        Photo: Unsplash photo-1555041469-a586c61ea9bc (warm green sofa, home interior)
+        To swap: replace the backgroundImage URL below with any Unsplash/image URL.
+      */}
+      <section
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&h=900&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 40%',
+          minHeight: '580px',
+          display: 'flex',
+          alignItems: 'flex-end',
+        }}
+      >
+        {/* Dark overlay — navy-dark at 78% opacity so photo reads through warmly */}
+        <div
+          style={{ backgroundColor: 'rgba(15, 48, 32, 0.78)', width: '100%' }}
+          className="py-16 sm:py-20"
+        >
+          <div className="max-w-3xl mx-auto px-6">
 
-          <p className="text-sm text-slate-mid mb-8 tracking-wide">
-            Estate Planning Assessment &nbsp;·&nbsp; For families who want to be prepared
-          </p>
-
-          <h1
-            style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1 }}
-            className="text-6xl sm:text-7xl font-bold text-navy mb-8"
-          >
-            If something happened to you today, would your family know what to do?
-          </h1>
-
-          <p className="text-xl text-slate-mid leading-relaxed mb-4" style={{ maxWidth: '56ch' }}>
-            Most people don&apos;t have an answer to that question.
-            Not because they don&apos;t care — but because no one ever showed them
-            how to find out without first hiring an attorney.
-          </p>
-
-          <p className="text-lg text-slate-mid leading-relaxed mb-12" style={{ maxWidth: '52ch' }}>
-            Will &amp; Estate Ready changes that. In about ten minutes, you answer
-            40 plain-language questions and receive a personal report that tells you
-            exactly where your estate planning stands — and what to do about it.
-          </p>
-
-          <div style={{ borderTop: '1px solid #EDE9DC', borderBottom: '1px solid #EDE9DC' }} className="py-8 mb-8">
-            <p className="text-sm text-slate-mid mb-5">
-              <strong className="text-navy">One-time cost: $21</strong>
-              &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; No account required &nbsp;·&nbsp; About 10 minutes
+            <p className="text-sm text-white/60 mb-6 tracking-wide uppercase">
+              Estate Planning Assessment
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 items-start">
+
+            <h1
+              style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1 }}
+              className="text-5xl sm:text-7xl font-bold text-white mb-7"
+            >
+              If something happened to you today, would your family know what to do?
+            </h1>
+
+            <p className="text-xl text-white/80 leading-relaxed mb-8" style={{ maxWidth: '54ch' }}>
+              In about ten minutes, you answer 40 plain-language questions and receive
+              a personal report that tells you exactly where your estate planning
+              stands — and what to do first.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 items-start mb-8">
               <Link
                 href="/intake"
-                className="bg-navy text-white text-lg font-semibold px-8 py-4 hover:bg-navy-light transition-colors text-center"
+                className="bg-white text-navy text-lg font-semibold px-8 py-4 hover:bg-cream transition-colors text-center"
               >
                 Begin My Assessment — $21
               </Link>
               <Link
                 href="/sample-report"
-                className="text-navy text-base font-medium underline underline-offset-4 hover:text-navy-light transition-colors sm:pt-3"
+                className="text-white/80 text-base font-medium underline underline-offset-4 hover:text-white transition-colors sm:pt-3"
               >
                 View a sample report first →
               </Link>
             </div>
-            <p className="text-sm text-slate-mid mt-5">
-              Not legal advice &nbsp;·&nbsp; Payment via Stripe &nbsp;·&nbsp; Report delivered by email
-            </p>
-          </div>
 
+            <p className="text-sm text-white/50">
+              $21 one-time &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; Not legal advice &nbsp;·&nbsp; Payment via Stripe
+            </p>
+
+          </div>
         </div>
       </section>
 
