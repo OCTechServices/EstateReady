@@ -8,9 +8,8 @@ import { calculateScore } from '@/lib/scoring'
 import ProgressBar from '@/components/questionnaire/ProgressBar'
 import ScoreRing from '@/components/ScoreRing'
 import WaveLines from '@/components/WaveLines'
-import HeroRibbons from '@/components/HeroRibbons'
 
-type Step = 'questionnaire' | 'preview' | 'email'
+type Step = 'intro' | 'questionnaire' | 'preview' | 'email'
 
 const TIER_PREVIEW_THEME: Record<Tier, { bg: string; text: string; sub: string; ring: string }> = {
   1: { bg: 'bg-tier-1', text: 'text-white', sub: 'text-gold-light',  ring: 'rgba(212,180,131,0.9)' },
@@ -27,7 +26,7 @@ function scrollTop() {
 
 export default function IntakePage() {
   const router = useRouter()
-  const [step, setStep] = useState<Step>('questionnaire')
+  const [step, setStep] = useState<Step>('intro')
   const [questionIndex, setQuestionIndex] = useState(0)
   const [answers, setAnswers] = useState<Answers>({})
   const [email, setEmail] = useState('')
@@ -116,26 +115,80 @@ export default function IntakePage() {
     <div className="min-h-screen bg-cream">
 
       {/* Sticky header */}
-      <div className="sticky top-0 z-10 bg-white border-b border-cream-dark shadow-sm relative">
-        <div className="absolute right-0 top-0 bottom-0 w-2/5 overflow-hidden pointer-events-none" aria-hidden="true">
-          <HeroRibbons />
-        </div>
-        <div className="max-w-2xl mx-auto px-6 pt-4 pb-4 relative z-10">
+      <div className="sticky top-0 z-10 bg-white border-b border-cream-dark shadow-sm">
+        <div className="max-w-2xl mx-auto px-6 pt-4 pb-4">
           <div className="flex items-center justify-between mb-4">
             <Link href="/" style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl font-bold text-navy hover:text-navy-light transition-colors">
-              EstateReady
+              Will &amp; Estate Ready
             </Link>
             <span className="text-xs text-slate-mid">Estate Planning Assessment</span>
           </div>
-          <ProgressBar
-            currentQuestion={step === 'preview' || step === 'email' ? totalQuestions : questionIndex}
-            totalQuestions={totalQuestions}
-            domain={step === 'questionnaire' ? (currentQuestion?.domain ?? null) : null}
-          />
+          {step !== 'intro' && (
+            <ProgressBar
+              currentQuestion={step === 'preview' || step === 'email' ? totalQuestions : questionIndex}
+              totalQuestions={totalQuestions}
+              domain={step === 'questionnaire' ? (currentQuestion?.domain ?? null) : null}
+            />
+          )}
         </div>
       </div>
 
       <div className="max-w-2xl mx-auto px-6 py-10">
+
+        {/* Intro — orientation card before Q1 */}
+        {/*
+          Photo: Unsplash photo-1455390582262-044cdead277a (fountain pen writing on paper)
+          Dark green overlay at 86% — warm, editorial, conveys "documentation and preparation."
+        */}
+        {step === 'intro' && (
+          <div
+            style={{
+              backgroundImage: 'url(https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&h=800&q=80)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              overflow: 'hidden',
+            }}
+          >
+            <div style={{ backgroundColor: 'rgba(10, 30, 20, 0.86)' }} className="px-6 sm:px-10 py-14">
+              <p
+                className="text-xs font-semibold uppercase tracking-widest mb-6"
+                style={{ color: '#B5935A' }}
+              >
+                Estate Planning Assessment
+              </p>
+              <h1
+                style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.15 }}
+                className="text-3xl sm:text-4xl font-bold text-white mb-5"
+              >
+                You&apos;re in the right place.
+              </h1>
+              <p className="text-white/75 text-base leading-relaxed mb-8" style={{ maxWidth: '44ch' }}>
+                This assessment covers 40 plain-language questions across 7 planning
+                areas. Takes about 10 minutes. Answer based on what you know today —
+                no paperwork required.
+              </p>
+              <div className="space-y-3 mb-10">
+                {[
+                  '40 questions · 7 planning areas · about 10 minutes',
+                  'No wrong answers — estimates are perfectly fine',
+                  '$21 at the end · No subscription · Your data stays private',
+                ].map(item => (
+                  <div key={item} className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#B5935A' }} />
+                    <p className="text-white/70 text-sm">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => setStep('questionnaire')}
+                className="bg-white text-navy text-base font-semibold px-8 py-4 hover:bg-cream transition-colors"
+                style={{ borderBottom: '3px solid #B5935A' }}
+              >
+                Begin Assessment →
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Domain transition card */}
         {step === 'questionnaire' && domainTransition && (
@@ -220,9 +273,8 @@ export default function IntakePage() {
         {/* Tier preview — the conversion moment */}
         {step === 'preview' && (
           <div>
-            <div className={`rounded-2xl overflow-hidden mb-6 ${previewTheme.bg} relative`}>
-              <WaveLines />
-              <div className="px-8 py-8 flex items-start justify-between gap-6 relative z-10">
+            <div className={`rounded-2xl overflow-hidden mb-6 ${previewTheme.bg}`}>
+              <div className="px-8 py-8 flex items-start justify-between gap-6">
                 <div className="flex-1">
                 <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${previewTheme.sub}`}>
                   Your Assessment Result
@@ -248,7 +300,7 @@ export default function IntakePage() {
                   <ScoreRing score={score} color={previewTheme.ring} />
                 </div>
               </div>
-              <div className="bg-black/10 px-8 py-3 relative z-10">
+              <div className="bg-black/10 px-8 py-3">
                 <p className={`text-xs ${previewTheme.sub}`}>
                   Delivered securely to your inbox · Valid for one year
                 </p>
@@ -272,7 +324,8 @@ export default function IntakePage() {
               </button>
               <button
                 onClick={() => { setStep('email'); scrollTop() }}
-                className="bg-navy text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy-light transition-colors"
+                className="bg-navy text-white px-6 py-3 text-sm font-semibold hover:bg-navy-light transition-colors"
+                style={{ borderBottom: '3px solid #B5935A' }}
               >
                 Get My Full Report — $21 →
               </button>
@@ -317,42 +370,20 @@ export default function IntakePage() {
               )}
             </div>
 
-            <div className="bg-white rounded-xl border border-cream-dark p-4 mb-6">
-              <p className="font-medium text-navy text-sm mb-2">What happens next</p>
-              <ol className="space-y-1 list-decimal list-inside text-xs text-slate-mid leading-relaxed">
-                <li>You pay $21 via Stripe (secure, one-time — no subscription)</li>
-                <li>We score your responses and generate your report</li>
-                <li>You receive a secure link to your full report by email</li>
-                <li>Access your report any time for up to one year</li>
-              </ol>
-            </div>
+            <p className="text-xs text-slate-mid mb-6 leading-relaxed">
+              After payment, we generate your report and send a secure link to your inbox.
+              You can access it any time for one year.
+            </p>
 
             {error && <p className="text-xs text-tier-4 mb-4">{error}</p>}
 
-            <div className="bg-cream border border-cream-dark rounded-xl px-4 py-3 mb-5">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2.5">
-                {[
-                  {
-                    text: 'Payment secured by Stripe',
-                    icon: <svg viewBox="0 0 24 24" fill="none" className="w-3.5 h-3.5 shrink-0 text-navy" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>,
-                  },
-                  {
-                    text: 'Your data is never sold or shared',
-                    icon: <svg viewBox="0 0 24 24" fill="none" className="w-3.5 h-3.5 shrink-0 text-navy" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-                  },
-                  {
-                    text: 'One-time · No subscription',
-                    icon: <svg viewBox="0 0 24 24" fill="none" className="w-3.5 h-3.5 shrink-0 text-navy" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
-                  },
-                ].map((item) => (
-                  <div key={item.text} className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-navy/10 flex items-center justify-center shrink-0">
-                      {item.icon}
-                    </div>
-                    <span className="text-xs font-medium text-slate-mid">{item.text}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 mb-6">
+              {['Payment secured by Stripe', 'Data never sold or shared', 'One-time · No subscription'].map((t) => (
+                <span key={t} className="flex items-center gap-1.5 text-xs text-slate-mid">
+                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#B5935A' }} />
+                  {t}
+                </span>
+              ))}
             </div>
 
             <div className="flex items-center justify-between pt-5 border-t border-cream-dark">
@@ -365,11 +396,12 @@ export default function IntakePage() {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                className={`px-6 py-3 text-sm font-semibold transition-all ${
                   !isSubmitting
                     ? 'bg-navy text-white hover:bg-navy-light'
                     : 'bg-cream-dark text-slate-mid cursor-not-allowed'
                 }`}
+                style={!isSubmitting ? { borderBottom: '3px solid #B5935A' } : undefined}
               >
                 {isSubmitting ? 'Redirecting to payment…' : 'Pay $21 & Get My Report →'}
               </button>
