@@ -131,7 +131,7 @@ export default async function ReportPage({ params }: Props) {
       <header className="bg-white border-b border-cream-dark px-6 py-4 print:hidden">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link href="/" style={{ fontFamily: 'var(--font-playfair)' }} className="text-base font-bold text-navy tracking-tight">
-            EstateReady
+            Will &amp; Estate Ready
           </Link>
           <PrintButton />
         </div>
@@ -159,7 +159,7 @@ export default async function ReportPage({ params }: Props) {
           </div>
           <div className={`bg-black/10 px-8 py-3 flex items-center justify-between`}>
             <p className={`text-xs ${theme.subtext}`}>Generated {generatedDate}</p>
-            <p className={`text-xs ${theme.subtext}`}>EstateReady Assessment Report</p>
+            <p className={`text-xs ${theme.subtext}`}>Will &amp; Estate Ready Assessment Report</p>
           </div>
         </div>
 
@@ -257,7 +257,7 @@ export default async function ReportPage({ params }: Props) {
             <div className="flex items-center justify-center gap-3 flex-wrap [&_button]:text-white [&_button]:hover:text-white/70">
               <PrintButton />
               <a
-                href={`mailto:?subject=My EstateReady Report&body=View my estate planning assessment: ${process.env.NEXT_PUBLIC_URL}/report/${token}`}
+                href={`mailto:?subject=My Will & Estate Ready Report&body=View my estate planning assessment: ${process.env.NEXT_PUBLIC_URL}/report/${token}`}
                 className="inline-flex items-center bg-white text-navy px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-cream transition-colors"
               >
                 Email to Attorney →
@@ -266,8 +266,73 @@ export default async function ReportPage({ params }: Props) {
           </div>
         </div>
 
+        {/* Resources — where to go from here */}
+        {/*
+          TODO: Replace href values with affiliate URLs once approved:
+          - Policygenius: swap for affiliate tracking URL from their program
+          - LegalZoom: swap for affiliate tracking URL from their program
+          - ACTEC: public directory, no affiliate needed
+        */}
+        <div className="bg-white rounded-2xl border border-cream-dark overflow-hidden">
+          <div className="px-6 py-4 border-b border-cream-dark">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-mid">Where to go from here</p>
+          </div>
+          <div className="divide-y divide-cream-dark">
+            {[
+              {
+                n: '01',
+                label: 'Review your life insurance',
+                desc: 'Compare policies and identify coverage gaps in minutes — no agent required.',
+                cta: 'Explore on Policygenius →',
+                href: 'https://www.policygenius.com/life-insurance/',
+              },
+              {
+                n: '02',
+                label: 'Draft documents yourself',
+                desc: 'Wills, trusts, and powers of attorney — online, without an attorney.',
+                cta: 'Start on LegalZoom →',
+                href: 'https://www.legalzoom.com/personal/estate-planning/',
+              },
+              {
+                n: '03',
+                label: 'Find a certified estate planning attorney',
+                desc: 'The ACTEC directory lists attorneys who specialize in trusts and estates.',
+                cta: 'Search ACTEC Directory →',
+                href: 'https://www.actec.org/member-directory/',
+              },
+            ].map((r) => (
+              <div key={r.n} className="flex items-start gap-5 px-6 py-5">
+                <span
+                  className="text-xl font-bold tabular-nums shrink-0 pt-0.5 w-7"
+                  style={{ color: 'rgba(181,147,90,0.6)', fontFamily: 'var(--font-playfair)' }}
+                >
+                  {r.n}
+                </span>
+                <div className="w-px self-stretch bg-gold/20 shrink-0" />
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-navy mb-0.5">{r.label}</p>
+                  <p className="text-xs text-slate-mid leading-relaxed mb-2">{r.desc}</p>
+                  <a
+                    href={r.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-navy underline underline-offset-2 hover:text-navy-light transition-colors"
+                  >
+                    {r.cta}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="px-6 py-3 bg-cream border-t border-cream-dark">
+            <p className="text-[10px] text-slate-mid">
+              Will &amp; Estate Ready is not affiliated with these services unless noted. Links are provided for your convenience only.
+            </p>
+          </div>
+        </div>
+
         <p className="text-xs text-gray-400 text-center pb-4">
-          EstateReady · Not a law firm · Not legal advice · For informational purposes only
+          Will &amp; Estate Ready · Not a law firm · Not legal advice · For informational purposes only
         </p>
       </div>
     </div>
