@@ -25,7 +25,7 @@ export default function ProgressBar({ currentQuestion, totalQuestions, domain }:
   return (
     <div className="mb-6">
       <div className="flex items-center justify-between mb-1.5">
-        <span className="text-xs font-semibold text-navy">{label}</span>
+        <span className="text-sm font-bold text-navy" style={{ fontFamily: 'var(--font-playfair)' }}>{label}</span>
         <span className="text-xs text-slate-mid">
           {isComplete ? 'Complete' : `${currentQuestion + 1} / ${totalQuestions}`}
         </span>

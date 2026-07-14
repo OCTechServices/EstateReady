@@ -7,7 +7,6 @@ import { DOMAIN_ORDER, QUESTIONS_BY_DOMAIN, DOMAIN_LABELS, Answers, TIER_LABELS,
 import { calculateScore } from '@/lib/scoring'
 import ProgressBar from '@/components/questionnaire/ProgressBar'
 import ScoreRing from '@/components/ScoreRing'
-import WaveLines from '@/components/WaveLines'
 
 type Step = 'intro' | 'questionnaire' | 'preview' | 'email'
 
@@ -192,13 +191,12 @@ export default function IntakePage() {
 
         {/* Domain transition card */}
         {step === 'questionnaire' && domainTransition && (
-          <div className="rounded-2xl overflow-hidden bg-navy-dark relative">
-            <WaveLines />
-            <div className="relative z-10 px-8 py-12 text-center">
+          <div className="overflow-hidden bg-navy-dark">
+            <div className="px-8 py-14 text-center">
               <p className="text-[10px] font-bold text-gold uppercase tracking-widest mb-5">
                 Domain {domainTransition.n} of {DOMAIN_ORDER.length}
               </p>
-              <div className="flex justify-center gap-1.5 mb-6">
+              <div className="flex justify-center gap-1.5 mb-8">
                 {DOMAIN_ORDER.map((_, i) => (
                   <div
                     key={i}
@@ -211,15 +209,19 @@ export default function IntakePage() {
                   />
                 ))}
               </div>
-              <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-2xl font-bold text-white mb-2">
+              <h2
+                style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.15 }}
+                className="text-3xl sm:text-4xl font-bold text-white mb-3"
+              >
                 {DOMAIN_LABELS[domainTransition.domain]}
               </h2>
-              <p className="text-white/50 text-sm mb-8">
+              <p className="text-white/50 text-base mb-10">
                 {domainTransition.count} questions in this section
               </p>
               <button
                 onClick={() => setDomainTransition(null)}
-                className="bg-white text-navy px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-cream transition-colors"
+                className="bg-white text-navy px-7 py-3.5 text-sm font-semibold hover:bg-cream transition-colors"
+                style={{ borderBottom: '3px solid #B5935A' }}
               >
                 Continue →
               </button>
@@ -233,10 +235,10 @@ export default function IntakePage() {
             {isLastQuestion && (
               <p className="text-xs font-semibold text-gold uppercase tracking-widest mb-3">Last question</p>
             )}
-            <div className="bg-white rounded-2xl border border-cream-dark p-6 mb-5">
-              <p className="text-navy font-semibold text-base leading-snug mb-4">{currentQuestion.text}</p>
+            <div className="bg-white border border-cream-dark p-6 sm:p-8 mb-5">
+              <p className="text-navy font-semibold text-lg leading-snug mb-5">{currentQuestion.text}</p>
               {currentQuestion.annotation && (
-                <p className="text-xs text-gold bg-gold/10 rounded-lg px-3 py-2 mb-4 leading-relaxed">
+                <p className="text-xs text-gold bg-gold/10 px-3 py-2 mb-5 leading-relaxed">
                   {currentQuestion.annotation}
                 </p>
               )}
@@ -247,7 +249,7 @@ export default function IntakePage() {
                     <button
                       key={option.value}
                       onClick={() => handleAnswer(currentQuestion.id, option.value)}
-                      className={`w-full text-left px-4 py-3 rounded-lg border text-sm transition-all ${
+                      className={`w-full text-left px-4 py-4 border text-base transition-all ${
                         selected
                           ? 'border-navy bg-navy text-white'
                           : 'border-cream-dark bg-white text-slate-mid hover:border-navy/40 hover:text-navy'
@@ -273,28 +275,46 @@ export default function IntakePage() {
         {/* Tier preview — the conversion moment */}
         {step === 'preview' && (
           <div>
-            <div className={`rounded-2xl overflow-hidden mb-6 ${previewTheme.bg}`}>
-              <div className="px-8 py-8 flex items-start justify-between gap-6">
+            <div className={`overflow-hidden mb-6 ${previewTheme.bg}`}>
+              <div className="px-8 py-10 flex items-start justify-between gap-6">
                 <div className="flex-1">
-                <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${previewTheme.sub}`}>
-                  Your Assessment Result
-                </p>
-                <h2 style={{ fontFamily: 'var(--font-playfair)' }} className={`text-3xl font-bold mb-2 ${previewTheme.text}`}>
-                  Tier {tier} — {TIER_LABELS[tier]}
-                </h2>
-                <p className={`text-sm leading-relaxed mb-4 ${previewTheme.sub}`}>
-                  Based on your responses across all 7 domains, your estate planning readiness
-                  has been scored at <strong className={previewTheme.text}>{score} out of 100</strong>.
-                </p>
-                <div className={`rounded-xl bg-black/15 px-5 py-4 text-sm ${previewTheme.text}`}>
-                  <p className="font-semibold mb-2">Your full report includes:</p>
-                  <ul className="space-y-1 text-sm">
-                    <li className={previewTheme.sub}>✓ Complete scoring narrative</li>
-                    <li className={previewTheme.sub}>✓ Priority action plan (5 specific steps)</li>
-                    <li className={previewTheme.sub}>✓ Domain-by-domain findings</li>
-                    <li className={previewTheme.sub}>✓ Attorney discussion guide</li>
-                  </ul>
-                </div>
+                  <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${previewTheme.sub}`}>
+                    Your Assessment Result
+                  </p>
+                  <h2
+                    style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1 }}
+                    className={`text-4xl sm:text-5xl font-bold mb-4 ${previewTheme.text}`}
+                  >
+                    Tier {tier} — {TIER_LABELS[tier]}
+                  </h2>
+                  <p className={`text-base leading-relaxed mb-6 ${previewTheme.sub}`}>
+                    Based on your responses across all 7 domains, your estate planning
+                    readiness has been scored at{' '}
+                    <strong className={previewTheme.text}>{score} out of 100</strong>.
+                  </p>
+                  <div className="bg-black/15 px-5 py-5">
+                    <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${previewTheme.sub}`}>
+                      Your full report includes
+                    </p>
+                    <div className="space-y-2">
+                      {[
+                        'Complete scoring narrative',
+                        'Priority action plan — 5 specific steps',
+                        'Domain-by-domain findings',
+                        'Attorney discussion guide',
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <span
+                            className="text-xs font-bold tabular-nums shrink-0 mt-0.5"
+                            style={{ color: previewTheme.ring }}
+                          >
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          <p className={`text-sm leading-snug ${previewTheme.sub}`}>{item}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 <div className="shrink-0 hidden sm:block">
                   <ScoreRing score={score} color={previewTheme.ring} />
@@ -307,24 +327,16 @@ export default function IntakePage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-cream-dark p-6 mb-6">
-              <p className="text-sm text-slate-mid leading-relaxed">
-                Your assessment is complete. To receive your full EstateReady Report — including
-                your complete scoring narrative, priority action plan, and attorney discussion
-                guide — enter your email and complete a one-time $21 payment.
-              </p>
-            </div>
-
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
               <button
                 onClick={handleBack}
-                className="text-sm text-slate-mid hover:text-navy transition-colors"
+                className="text-sm text-slate-mid hover:text-navy transition-colors order-2 sm:order-1"
               >
                 ← Review answers
               </button>
               <button
                 onClick={() => { setStep('email'); scrollTop() }}
-                className="bg-navy text-white px-6 py-3 text-sm font-semibold hover:bg-navy-light transition-colors"
+                className="w-full sm:w-auto bg-navy text-white px-8 py-4 text-base font-semibold hover:bg-navy-light transition-colors order-1 sm:order-2"
                 style={{ borderBottom: '3px solid #B5935A' }}
               >
                 Get My Full Report — $21 →
@@ -336,8 +348,8 @@ export default function IntakePage() {
         {/* Email + payment */}
         {step === 'email' && (
           <div>
-            <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-2xl font-bold text-navy mb-1">
-              Almost done
+            <h2 style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.15 }} className="text-3xl font-bold text-navy mb-1">
+              Almost done.
             </h2>
             <p className="text-sm text-slate-mid mb-6 leading-relaxed">
               Enter your email to receive your report. After payment, we will send a secure
@@ -354,7 +366,7 @@ export default function IntakePage() {
                 value={email}
                 onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError('') }}
                 placeholder="you@example.com"
-                className={`w-full border rounded-lg px-4 py-3 text-sm text-navy placeholder-slate-mid/50 focus:outline-none bg-white transition-colors ${
+                className={`w-full border px-4 py-3 text-base text-navy placeholder-slate-mid/50 focus:outline-none bg-white transition-colors ${
                   emailError
                     ? 'border-[#7A2840] focus:border-[#7A2840] bg-[#FDF2F4]'
                     : 'border-cream-dark focus:border-navy'
@@ -386,17 +398,17 @@ export default function IntakePage() {
               ))}
             </div>
 
-            <div className="flex items-center justify-between pt-5 border-t border-cream-dark">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-5 border-t border-cream-dark">
               <button
                 onClick={handleBack}
-                className="text-sm text-slate-mid hover:text-navy transition-colors"
+                className="text-sm text-slate-mid hover:text-navy transition-colors order-2 sm:order-1"
               >
                 ← Back
               </button>
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className={`px-6 py-3 text-sm font-semibold transition-all ${
+                className={`w-full sm:w-auto px-8 py-4 text-base font-semibold transition-all order-1 sm:order-2 ${
                   !isSubmitting
                     ? 'bg-navy text-white hover:bg-navy-light'
                     : 'bg-cream-dark text-slate-mid cursor-not-allowed'
