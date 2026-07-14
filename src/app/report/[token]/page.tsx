@@ -7,6 +7,7 @@ import PrintButton from '@/components/PrintButton'
 import ScoreRing from '@/components/ScoreRing'
 import WaveLines from '@/components/WaveLines'
 import CollapsibleSection from '@/components/CollapsibleSection'
+import ReportChat from '@/components/ReportChat'
 
 const TIER_THEME: Record<Tier, {
   bg: string
@@ -330,6 +331,9 @@ export default async function ReportPage({ params }: Props) {
             </p>
           </div>
         </div>
+
+        {/* Q&A agent */}
+        <ReportChat token={token} />
 
         <p className="text-xs text-gray-400 text-center pb-4">
           Will &amp; Estate Ready · Not a law firm · Not legal advice · For informational purposes only
