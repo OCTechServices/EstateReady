@@ -5,8 +5,6 @@ import { TIER_LABELS, TIER_DESCRIPTIONS, Tier } from '@/types/questionnaire'
 import { ReportRecommendations } from '@/lib/report'
 import PrintButton from '@/components/PrintButton'
 import ScoreRing from '@/components/ScoreRing'
-import WaveLines from '@/components/WaveLines'
-import CollapsibleSection from '@/components/CollapsibleSection'
 import ReportChat from '@/components/ReportChat'
 
 const TIER_THEME: Record<Tier, {
@@ -141,16 +139,19 @@ export default async function ReportPage({ params }: Props) {
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
 
         {/* Tier verdict card */}
-        <div className={`rounded-2xl overflow-hidden ${theme.bg} print:border print:border-gray-300`}>
-          <div className="px-8 py-8 flex items-center justify-between gap-6">
+        <div className={`overflow-hidden ${theme.bg} print:border print:border-gray-300`}>
+          <div className="px-8 py-10 flex items-start justify-between gap-6">
             <div className="flex-1">
-              <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${theme.subtext}`}>
+              <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${theme.subtext}`}>
                 Assessment Result
               </p>
-              <h1 className={`text-3xl font-bold mb-2 ${theme.text}`}>
+              <h1
+                style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1 }}
+                className={`text-4xl sm:text-5xl font-bold mb-4 ${theme.text}`}
+              >
                 Tier {tier} — {TIER_LABELS[tier]}
               </h1>
-              <p className={`text-sm leading-relaxed ${theme.subtext}`}>
+              <p className={`text-base leading-relaxed ${theme.subtext}`}>
                 {TIER_DESCRIPTIONS[tier]}
               </p>
             </div>
@@ -158,108 +159,120 @@ export default async function ReportPage({ params }: Props) {
               <ScoreRing score={report.score} color="rgba(255,255,255,0.9)" />
             </div>
           </div>
-          <div className={`bg-black/10 px-8 py-3 flex items-center justify-between`}>
+          <div className="bg-black/10 px-8 py-3 flex items-center justify-between">
             <p className={`text-xs ${theme.subtext}`}>Generated {generatedDate}</p>
             <p className={`text-xs ${theme.subtext}`}>Will &amp; Estate Ready Assessment Report</p>
           </div>
         </div>
 
         {/* Narrative */}
-        <CollapsibleSection title="Assessment Summary">
-          <div className="space-y-3">
+        <div className="bg-white border border-cream-dark overflow-hidden">
+          <div className="px-8 py-5 border-b border-cream-dark">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-mid">Assessment Summary</p>
+          </div>
+          <div className="px-8 py-7 space-y-4">
             {rec.narrative?.split('\n').filter(Boolean).map((para, i) => (
-              <p key={i} className="text-gray-700 text-sm leading-relaxed">{para}</p>
+              <p key={i} className="text-gray-700 text-base leading-relaxed">{para}</p>
             ))}
           </div>
-        </CollapsibleSection>
+        </div>
 
         {/* Priority actions */}
-        <CollapsibleSection title="Priority Actions">
-          <div className="space-y-4">
+        <div className="bg-white border border-cream-dark overflow-hidden">
+          <div className="px-8 py-5 border-b border-cream-dark">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-mid">Priority Actions</p>
+          </div>
+          <div className="divide-y divide-cream-dark">
             {rec.priority_actions?.map((item, i) => (
-              <div key={i} className="flex gap-4">
-                <div className="shrink-0 w-8 h-8 rounded-full bg-gray-900 text-white text-xs font-bold flex items-center justify-center mt-0.5">
+              <div key={i} className="flex gap-5 px-8 py-6">
+                <span
+                  className="text-xl font-bold tabular-nums shrink-0 pt-0.5 w-7"
+                  style={{ color: 'rgba(181,147,90,0.7)', fontFamily: 'var(--font-playfair)' }}
+                >
                   {String(i + 1).padStart(2, '0')}
-                </div>
-                <div className="flex-1 border-b border-gray-50 pb-4 last:border-0 last:pb-0">
-                  <p className="text-sm font-semibold text-gray-900 mb-1 leading-snug">{item.action}</p>
-                  <p className="text-xs text-gray-500 leading-relaxed">{item.reason}</p>
+                </span>
+                <div className="w-px self-stretch bg-gold/20 shrink-0" />
+                <div className="flex-1">
+                  <p className="text-base font-semibold text-gray-900 mb-1.5 leading-snug">{item.action}</p>
+                  <p className="text-sm text-gray-500 leading-relaxed">{item.reason}</p>
                 </div>
               </div>
             ))}
           </div>
-        </CollapsibleSection>
+        </div>
 
         {/* Domain findings */}
         {orderedFindings.length > 0 && (
-          <CollapsibleSection
-            title="Domain Findings"
-            headerRight={
-              <div className="flex items-center gap-2">
+          <div className="bg-white border border-cream-dark overflow-hidden">
+            <div className="px-8 py-5 border-b border-cream-dark flex flex-wrap items-center justify-between gap-3">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-mid">Domain Findings</p>
+              <div className="flex items-center gap-2 flex-wrap">
                 {criticalFindings.length > 0 && (
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#7A2840]/10 border border-[#7A2840]/20">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#7A2840]/10 border border-[#7A2840]/20">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#7A2840]" />
                     <span className="text-[10px] font-semibold uppercase tracking-wide text-[#7A2840]">{criticalFindings.length} critical</span>
                   </span>
                 )}
                 {cautionFindings.length > 0 && (
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gold/10 border border-gold/25">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold/10 border border-gold/25">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" />
                     <span className="text-[10px] font-semibold uppercase tracking-wide text-gold">{cautionFindings.length} caution</span>
                   </span>
                 )}
                 {infoFindings.length > 0 && (
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-mid/10 border border-slate-mid/20">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-slate-mid/10 border border-slate-mid/20">
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-mid" />
                     <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-mid">{infoFindings.length} note</span>
                   </span>
                 )}
               </div>
-            }
-          >
-            <div className="space-y-3">
+            </div>
+            <div className="divide-y divide-cream-dark">
               {orderedFindings.map((finding, i) => {
                 const style = SEVERITY_STYLE[finding.severity] ?? SEVERITY_STYLE.info
                 return (
-                  <div key={i} className={`rounded-xl border flex overflow-hidden ${style.bg}`}>
-                    <div className={`w-1 shrink-0 ${style.bar}`} />
-                    <div className="px-4 py-3 flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-xs font-semibold uppercase tracking-wide ${style.labelText}`}>
+                  <div key={i} className={`flex overflow-hidden ${style.bg}`}>
+                    <div className={`w-1.5 shrink-0 ${style.bar}`} />
+                    <div className="px-6 py-5 flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className={`text-xs font-bold uppercase tracking-widest ${style.labelText}`}>
                           {style.label}
                         </span>
                         <span className="text-gray-300 text-xs">·</span>
-                        <span className="text-xs font-medium text-gray-700">{finding.label}</span>
+                        <span className="text-sm font-semibold text-gray-800">{finding.label}</span>
                       </div>
-                      <p className="text-xs text-gray-600 leading-relaxed">{finding.finding}</p>
+                      <p className="text-sm text-gray-600 leading-relaxed">{finding.finding}</p>
                     </div>
                   </div>
                 )
               })}
             </div>
-          </CollapsibleSection>
+          </div>
         )}
 
         {/* Attorney CTA */}
-        <div className={`${theme.bg} rounded-2xl px-8 py-8 text-center relative overflow-hidden`}>
-          <WaveLines />
-          <div className="relative z-10">
-            <p className={`text-xs font-semibold uppercase tracking-widest mb-2 ${theme.subtext}`}>
+        <div className={`${theme.bg} overflow-hidden`}>
+          <div className="px-8 py-10 text-center">
+            <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${theme.subtext}`}>
               Your next step
             </p>
-            <h2 className={`text-xl font-bold mb-2 ${theme.text}`}>
+            <h2
+              style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.2 }}
+              className={`text-3xl font-bold mb-4 ${theme.text}`}
+            >
               Take this report to an estate planning attorney.
             </h2>
-            <p className={`text-sm leading-relaxed mb-6 max-w-md mx-auto ${theme.subtext}`}>
+            <p className={`text-base leading-relaxed mb-8 max-w-md mx-auto ${theme.subtext}`}>
               Print it, email it, or share the link. Hand it to your attorney at the start
               of your first meeting — it will save you both time and give you a more
               productive conversation from the moment you sit down.
             </p>
-            <div className="flex items-center justify-center gap-3 flex-wrap [&_button]:text-white [&_button]:hover:text-white/70">
+            <div className="flex items-center justify-center gap-4 flex-wrap [&_button]:text-white [&_button]:hover:text-white/70">
               <PrintButton />
               <a
                 href={`mailto:?subject=My Will & Estate Ready Report&body=View my estate planning assessment: ${process.env.NEXT_PUBLIC_URL}/report/${token}`}
-                className="inline-flex items-center bg-white text-navy px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-cream transition-colors"
+                className="inline-flex items-center bg-white text-navy px-6 py-3 text-sm font-semibold hover:bg-cream transition-colors"
+                style={{ borderBottom: '3px solid #B5935A' }}
               >
                 Email to Attorney →
               </a>
@@ -274,7 +287,7 @@ export default async function ReportPage({ params }: Props) {
           - LegalZoom: swap for affiliate tracking URL from their program
           - ACTEC: public directory, no affiliate needed
         */}
-        <div className="bg-white rounded-2xl border border-cream-dark overflow-hidden">
+        <div className="bg-white border border-cream-dark overflow-hidden">
           <div className="px-6 py-4 border-b border-cream-dark">
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-mid">Where to go from here</p>
           </div>
