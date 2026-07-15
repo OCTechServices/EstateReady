@@ -60,7 +60,7 @@ export default function IntakePage() {
 
   useEffect(() => {
     if (!domainTransition) return
-    const id = setTimeout(() => setDomainTransition(null), 11000)
+    const id = setTimeout(() => setDomainTransition(null), 9000)
     return () => clearTimeout(id)
   }, [domainTransition])
 
