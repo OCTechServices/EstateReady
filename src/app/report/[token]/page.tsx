@@ -165,6 +165,24 @@ export default async function ReportPage({ params }: Props) {
           </div>
         </div>
 
+        {/* Critical alert banner — only renders when critical findings exist */}
+        {criticalFindings.length > 0 && (
+          <div style={{ backgroundColor: '#3D0F1E', borderLeft: '6px solid #7A2840' }} className="px-8 py-8">
+            <p className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{ color: '#F5C8D4' }}>
+              {criticalFindings.length} Critical {criticalFindings.length === 1 ? 'Gap' : 'Gaps'} Found
+            </p>
+            <p
+              style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.15 }}
+              className="text-2xl sm:text-3xl font-bold text-white mb-4"
+            >
+              If something happened today, your family would face serious obstacles.
+            </p>
+            <p className="text-base leading-relaxed" style={{ color: 'rgba(245,200,212,0.85)' }}>
+              Your assessment identified {criticalFindings.length} critical {criticalFindings.length === 1 ? 'gap' : 'gaps'} — areas where missing documents or no planning could leave the people you care about without legal authority or clear direction at the worst possible time.
+            </p>
+          </div>
+        )}
+
         {/* Narrative */}
         <div className="bg-white border border-cream-dark overflow-hidden">
           <div className="px-8 py-5 border-b border-cream-dark">
@@ -179,17 +197,46 @@ export default async function ReportPage({ params }: Props) {
 
         {/* Priority actions */}
         <div className="bg-white border border-cream-dark overflow-hidden">
-          <div className="px-8 py-5 border-b border-cream-dark">
+          <div className="px-8 py-5 border-b border-cream-dark flex items-center justify-between">
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-mid">Priority Actions</p>
+            <p className="text-xs text-slate-mid hidden sm:block">Ordered by urgency — start with #1</p>
           </div>
+
+          {/* Action #1 — hero treatment */}
+          {rec.priority_actions?.[0] && (
+            <div style={{ backgroundColor: '#0F3020' }} className="px-8 py-8">
+              <div className="flex items-center gap-3 mb-5">
+                <span
+                  style={{ fontFamily: 'var(--font-playfair)', color: '#B5935A' }}
+                  className="text-2xl font-bold"
+                >
+                  01
+                </span>
+                <span
+                  className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1"
+                  style={{ backgroundColor: '#B5935A', color: 'white' }}
+                >
+                  Act First
+                </span>
+              </div>
+              <p className="text-xl sm:text-2xl font-bold text-white mb-3 leading-snug">
+                {rec.priority_actions[0].action}
+              </p>
+              <p className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                {rec.priority_actions[0].reason}
+              </p>
+            </div>
+          )}
+
+          {/* Actions #2 onward */}
           <div className="divide-y divide-cream-dark">
-            {rec.priority_actions?.map((item, i) => (
+            {rec.priority_actions?.slice(1).map((item, i) => (
               <div key={i} className="flex gap-5 px-8 py-6">
                 <span
                   className="text-xl font-bold tabular-nums shrink-0 pt-0.5 w-7"
                   style={{ color: 'rgba(181,147,90,0.7)', fontFamily: 'var(--font-playfair)' }}
                 >
-                  {String(i + 1).padStart(2, '0')}
+                  {String(i + 2).padStart(2, '0')}
                 </span>
                 <div className="w-px self-stretch bg-gold/20 shrink-0" />
                 <div className="flex-1">
@@ -227,10 +274,24 @@ export default async function ReportPage({ params }: Props) {
                 )}
               </div>
             </div>
-            <div className="divide-y divide-cream-dark">
+            <div className="divide-y divide-[#E8C4CC]">
               {orderedFindings.map((finding, i) => {
                 const style = SEVERITY_STYLE[finding.severity] ?? SEVERITY_STYLE.info
-                return (
+                const isCritical = finding.severity === 'critical'
+                return isCritical ? (
+                  <div key={i} className="flex overflow-hidden" style={{ backgroundColor: '#F5E8EC' }}>
+                    <div className="shrink-0 bg-[#7A2840]" style={{ width: '6px' }} />
+                    <div className="px-6 py-6 flex-1">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-[#7A2840] text-white">
+                          Critical
+                        </span>
+                        <span className="text-base font-bold text-gray-900">{finding.label}</span>
+                      </div>
+                      <p className="text-base text-gray-800 leading-relaxed font-medium">{finding.finding}</p>
+                    </div>
+                  </div>
+                ) : (
                   <div key={i} className={`flex overflow-hidden ${style.bg}`}>
                     <div className={`w-1.5 shrink-0 ${style.bar}`} />
                     <div className="px-6 py-5 flex-1">
