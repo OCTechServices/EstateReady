@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import ScoreRing from '@/components/ScoreRing'
+import CompassMark from '@/components/CompassMark'
 
 const PRIORITY_ACTIONS = [
   {
@@ -41,8 +42,9 @@ export default function SampleReportPage() {
 
       <header className="bg-white border-b border-cream-dark sticky top-0 z-20">
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl font-bold text-navy hover:text-navy-light transition-colors">
-            Will &amp; Estate Ready
+          <Link href="/" className="flex items-center gap-2.5">
+            <CompassMark size={26} />
+            <span style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl font-bold text-navy hover:text-navy-light transition-colors">Will &amp; Estate Ready</span>
           </Link>
           <Link
             href="/intake"

@@ -7,6 +7,7 @@ import { DOMAIN_ORDER, QUESTIONS_BY_DOMAIN, DOMAIN_LABELS, Answers, TIER_LABELS,
 import { calculateScore } from '@/lib/scoring'
 import ProgressBar from '@/components/questionnaire/ProgressBar'
 import ScoreRing from '@/components/ScoreRing'
+import CompassMark from '@/components/CompassMark'
 
 type Step = 'intro' | 'questionnaire' | 'preview' | 'email'
 
@@ -117,8 +118,9 @@ export default function IntakePage() {
       <div className="sticky top-0 z-10 bg-white border-b border-cream-dark shadow-sm">
         <div className="max-w-2xl mx-auto px-6 pt-4 pb-4">
           <div className="flex items-center justify-between mb-4">
-            <Link href="/" style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl font-bold text-navy hover:text-navy-light transition-colors">
-              Will &amp; Estate Ready
+            <Link href="/" className="flex items-center gap-2.5">
+              <CompassMark size={26} />
+              <span style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl font-bold text-navy hover:text-navy-light transition-colors">Will &amp; Estate Ready</span>
             </Link>
             <span className="text-xs text-slate-mid">Estate Planning Assessment</span>
           </div>

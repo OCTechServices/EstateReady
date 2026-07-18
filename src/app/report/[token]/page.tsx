@@ -6,6 +6,7 @@ import { ReportRecommendations } from '@/lib/report'
 import PrintButton from '@/components/PrintButton'
 import ScoreRing from '@/components/ScoreRing'
 import ReportChat from '@/components/ReportChat'
+import CompassMark from '@/components/CompassMark'
 
 const TIER_THEME: Record<Tier, {
   bg: string
@@ -129,8 +130,9 @@ export default async function ReportPage({ params }: Props) {
       {/* Top bar */}
       <header className="bg-white border-b border-cream-dark px-6 py-4 print:hidden">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <Link href="/" style={{ fontFamily: 'var(--font-playfair)' }} className="text-base font-bold text-navy tracking-tight">
-            Will &amp; Estate Ready
+          <Link href="/" className="flex items-center gap-2.5">
+            <CompassMark size={24} />
+            <span style={{ fontFamily: 'var(--font-playfair)' }} className="text-base font-bold text-navy tracking-tight">Will &amp; Estate Ready</span>
           </Link>
           <PrintButton />
         </div>

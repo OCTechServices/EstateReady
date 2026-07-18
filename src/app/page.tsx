@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import FaqAccordion from '@/components/FaqAccordion'
+import CompassMark from '@/components/CompassMark'
 
 // TODO: Remove impact-site-verification once Impact affiliate verification is complete
 export const metadata: Metadata = {
@@ -34,8 +35,9 @@ export default function Home() {
       {/* ── Nav ─────────────────────────────────────────────────────── */}
       <header style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }} className="sticky top-0 z-20">
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="#top" style={{ fontFamily: 'var(--font-playfair)' }} className="text-lg font-bold text-navy">
-            Will &amp; Estate Ready
+          <a href="#top" className="flex items-center gap-2.5">
+            <CompassMark size={26} />
+            <span style={{ fontFamily: 'var(--font-playfair)' }} className="text-lg font-bold text-navy">Will &amp; Estate Ready</span>
           </a>
           <div className="flex items-center gap-5">
             <Link href="/sample-report" className="text-sm text-slate-mid hover:text-navy transition-colors hidden sm:block">

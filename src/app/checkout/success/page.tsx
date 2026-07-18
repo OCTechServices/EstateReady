@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import CompassMark from '@/components/CompassMark'
 
 export default function CheckoutSuccessPage() {
   return (
@@ -6,8 +7,9 @@ export default function CheckoutSuccessPage() {
 
       <header className="bg-white border-b border-cream-dark px-6 py-4">
         <div className="max-w-3xl mx-auto">
-          <Link href="/" style={{ fontFamily: 'var(--font-playfair)' }} className="text-lg font-bold text-navy hover:text-navy-light transition-colors">
-            Will &amp; Estate Ready
+          <Link href="/" className="flex items-center gap-2.5">
+            <CompassMark size={26} />
+            <span style={{ fontFamily: 'var(--font-playfair)' }} className="text-lg font-bold text-navy hover:text-navy-light transition-colors">Will &amp; Estate Ready</span>
           </Link>
         </div>
       </header>
