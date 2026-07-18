@@ -34,4 +34,4 @@
 | D03 | Resend | Email | Verified domain: opcoretech.com; from: reports@opcoretech.com |
 | D04 | Anthropic Claude API | AI | Model: claude-sonnet-4-6; max_tokens: 4096; maxRetries: 5 |
 | D05 | Vercel | Hosting | Auto-deploy connected to OCTechServices/EstateReady on main branch; Production domain: willestateready.com |
-| D06 | Impact (affiliate) | Marketing | Pending verification; Trust & Will partnership in progress |
+| D06 | Impact (affiliate) | Marketing | Site verified; LegalZoom application "In Review"; Trust & Will rejected |
