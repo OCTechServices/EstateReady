@@ -20,6 +20,10 @@ export async function POST(req: NextRequest) {
 
     const { email, answers } = parsed.data as { email: string; answers: Answers }
 
+    // Diagnostic: log which Supabase project is being contacted
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'NOT SET'
+    console.log('Supabase URL prefix:', supabaseUrl.slice(0, 40))
+
     // Create submission record
     const db = getSupabaseAdmin()
 
