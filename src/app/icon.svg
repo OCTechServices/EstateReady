@@ -1,13 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
   <rect width="32" height="32" fill="#1A4A2E"/>
+  <!-- Inner gold border — premium badge feel -->
+  <rect x="2.5" y="2.5" width="27" height="27" fill="none" stroke="#B5935A" stroke-width="0.75" opacity="0.55"/>
+  <!-- WE monogram — vertically centered, serif -->
   <text
     x="16"
-    y="23"
+    y="21"
     text-anchor="middle"
+    dominant-baseline="auto"
     font-family="Georgia, 'Times New Roman', serif"
-    font-size="15"
+    font-size="16"
     font-weight="700"
     fill="#B5935A"
-    letter-spacing="0.5"
+    letter-spacing="-0.5"
   >WE</text>
 </svg>
