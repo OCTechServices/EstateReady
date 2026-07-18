@@ -3,12 +3,6 @@ import Link from 'next/link'
 import FaqAccordion from '@/components/FaqAccordion'
 import CompassMark from '@/components/CompassMark'
 
-// TODO: Remove impact-site-verification once Impact affiliate verification is complete
-export const metadata: Metadata = {
-  other: {
-    'impact-site-verification': '77ac9963-85ba-4e7f-a245-2bf77a5eef5b',
-  },
-}
 
 const TRUST_SIGNALS = [
   'Covers 7 key estate planning areas',

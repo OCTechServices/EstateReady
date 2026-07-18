@@ -15,10 +15,6 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  // TODO: Remove impact-site-verification once Impact affiliate verification is complete
-  other: {
-    'impact-site-verification': '77ac9963-85ba-4e7f-a245-2bf77a5eef5b',
-  },
   title: 'Will & Estate Ready — Estate Planning Readiness Assessment',
   description:
     'A guided assessment covering wills, trusts, healthcare directives, powers of attorney, and beneficiary designations. Receive a personalized readiness report that prepares you for a more informed conversation with an estate planning attorney. $21 one-time.',
