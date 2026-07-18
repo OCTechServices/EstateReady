@@ -54,10 +54,7 @@ export default function ReportChat({ token }: { token: string }) {
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-mid">
           Ask about your report
         </p>
-        <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-          <span className="text-[10px] text-slate-mid">Powered by Claude</span>
-        </div>
+        <span className="text-[10px] text-slate-mid uppercase tracking-widest">Report Q&amp;A</span>
       </div>
 
       {/* Messages or suggested questions */}

@@ -19,21 +19,21 @@ export const metadata: Metadata = {
   other: {
     'impact-site-verification': '77ac9963-85ba-4e7f-a245-2bf77a5eef5b',
   },
-  title: 'Will & Estate Ready — Know Where Your Estate Planning Stands',
+  title: 'Will & Estate Ready — Estate Planning Readiness Assessment',
   description:
-    'A 10-minute assessment that scores your estate planning readiness across 7 areas and prepares you for a smarter conversation with an attorney. Not legal advice. $21.',
+    'A guided assessment covering wills, trusts, healthcare directives, powers of attorney, and beneficiary designations. Receive a personalized readiness report that prepares you for a more informed conversation with an estate planning attorney. $21 one-time.',
   openGraph: {
-    title: 'Will & Estate Ready — Know Where Your Estate Planning Stands',
+    title: 'Will & Estate Ready — Estate Planning Readiness Assessment',
     description:
-      'Know where your estate planning stands — before you spend a dollar on attorney time. 40 questions · 7 areas · $21 one-time.',
+      'Understand your estate planning readiness before meeting an attorney. Personalized report covering 7 key areas. $21 one-time.',
     siteName: 'Will & Estate Ready',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Will & Estate Ready — Know Where Your Estate Planning Stands',
+    title: 'Will & Estate Ready — Estate Planning Readiness Assessment',
     description:
-      'Know where your estate planning stands — before you spend a dollar on attorney time.',
+      'Understand your estate planning readiness before meeting an attorney. Personalized report covering 7 key areas.',
   },
 }
 

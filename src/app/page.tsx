@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import FaqAccordion from '@/components/FaqAccordion'
 
 // TODO: Remove impact-site-verification once Impact affiliate verification is complete
 export const metadata: Metadata = {
@@ -8,8 +9,23 @@ export const metadata: Metadata = {
   },
 }
 
-import FaqAccordion from '@/components/FaqAccordion'
-import QuickCheck from '@/components/QuickCheck'
+const TRUST_SIGNALS = [
+  'Covers 7 key estate planning areas',
+  'Takes about 10 minutes',
+  'Personalized readiness report',
+  'Educational guidance — not legal advice',
+  'Designed to help you prepare before meeting an attorney',
+]
+
+const DOMAINS = [
+  { n: '01', label: 'Personal & Family Profile',   body: 'Family structure, dependents, marital status, and state of residence.' },
+  { n: '02', label: 'Assets & Property',            body: 'Real estate, retirement accounts, business interests, and overall estate value.' },
+  { n: '03', label: 'Existing Documents',           body: 'Wills, trusts, powers of attorney, healthcare directives, and advance directives.' },
+  { n: '04', label: 'Beneficiary Designations',     body: 'Life insurance, retirement accounts, bank accounts, and transfer-on-death designations.' },
+  { n: '05', label: 'Insurance',                    body: 'Life, long-term care, and disability coverage — and how it fits your planning.' },
+  { n: '06', label: 'Tax & Legacy Planning',        body: 'Estate tax exposure, gifting strategies, and long-term legacy goals.' },
+  { n: '07', label: 'Special Circumstances',        body: 'Business ownership, blended families, special needs dependents, and international assets.' },
+]
 
 export default function Home() {
   return (
@@ -26,49 +42,48 @@ export default function Home() {
               View Sample Report
             </Link>
             <Link href="/intake" className="text-sm font-semibold text-navy border border-navy px-4 py-2 hover:bg-navy hover:text-white transition-colors">
-              Begin Assessment
+              Start Assessment
             </Link>
           </div>
         </div>
       </header>
 
-      {/* ── Hero — full-bleed photo ─────────────────────────────────── */}
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
       {/*
         Photo: Unsplash photo-1555041469-a586c61ea9bc (warm green sofa, home interior)
-        To swap: replace the backgroundImage URL below with any Unsplash/image URL.
       */}
       <section
         style={{
           backgroundImage: 'url(https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&h=900&q=80)',
           backgroundSize: 'cover',
           backgroundPosition: 'center 40%',
-          minHeight: '580px',
+          minHeight: '600px',
           display: 'flex',
           alignItems: 'flex-end',
         }}
       >
-        {/* Dark overlay — navy-dark at 78% opacity so photo reads through warmly */}
         <div
           style={{ backgroundColor: 'rgba(15, 48, 32, 0.78)', width: '100%' }}
           className="py-16 sm:py-20"
         >
           <div className="max-w-3xl mx-auto px-6">
 
-            <p className="text-sm text-white/60 mb-6 tracking-wide uppercase">
-              Estate Planning Assessment
+            <p className="text-sm text-white/60 mb-5 tracking-wide uppercase">
+              Know where you stand before you meet an attorney.
             </p>
 
             <h1
               style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1 }}
               className="text-5xl sm:text-7xl font-bold text-white mb-7"
             >
-              If something happened to you today, would your family know what to do?
+              Understand Your Estate Planning Readiness Before Meeting an Attorney
             </h1>
 
-            <p className="text-xl text-white/80 leading-relaxed mb-8" style={{ maxWidth: '54ch' }}>
-              In about ten minutes, you answer 40 plain-language questions and receive
-              a personal report that tells you exactly where your estate planning
-              stands — and what to do first.
+            <p className="text-xl text-white/80 leading-relaxed mb-8" style={{ maxWidth: '58ch' }}>
+              Take a guided assessment covering wills, trusts, healthcare directives, powers of
+              attorney, beneficiaries, and asset planning. Receive a personalized readiness report
+              that helps you understand potential gaps and prepares you for a more informed
+              conversation with an estate planning professional.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 items-start mb-8">
@@ -77,27 +92,38 @@ export default function Home() {
                 className="bg-white text-navy text-lg font-semibold px-8 py-4 hover:bg-cream transition-colors text-center"
                 style={{ borderBottom: '3px solid #B5935A' }}
               >
-                Begin My Assessment — $21
+                Start My Assessment — $21
               </Link>
               <Link
                 href="/sample-report"
                 className="text-white text-base font-semibold underline underline-offset-4 hover:text-white/70 transition-colors sm:pt-3"
               >
-                View a sample report first →
+                See a sample report →
               </Link>
             </div>
 
-            <p className="text-sm text-white/50">
-              $21 one-time &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; Not legal advice &nbsp;·&nbsp; Payment via Stripe
-            </p>
+            {/* Trust signals */}
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-x-6 sm:gap-y-2">
+              {TRUST_SIGNALS.map(s => (
+                <p key={s} className="text-sm text-white/70 flex items-center gap-2">
+                  <span style={{ color: '#B5935A' }}>✔</span> {s}
+                </p>
+              ))}
+            </div>
 
           </div>
         </div>
       </section>
 
-      {/* ── Three facts ─────────────────────────────────────────────── */}
-      <section className="bg-white" style={{ borderTop: '1px solid #EDE9DC', borderBottom: '1px solid #EDE9DC' }}>
+      {/* ── Why Estate Planning Feels Complicated ──────────────────── */}
+      <section className="bg-white" style={{ borderBottom: '1px solid #EDE9DC' }}>
         <div className="max-w-3xl mx-auto px-6 py-14">
+          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-4 leading-snug">
+            Why estate planning feels complicated
+          </h2>
+          <p className="text-lg text-slate-mid leading-relaxed mb-10" style={{ maxWidth: '54ch' }}>
+            Most families know they need a plan. Few know where to start — or what they&apos;re actually missing.
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 sm:divide-x divide-cream-dark">
             {[
               {
@@ -128,23 +154,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Quick Check ─────────────────────────────────────────────── */}
+      {/* ── Who This Assessment Helps ───────────────────────────────── */}
       <section style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }}>
         <div className="max-w-3xl mx-auto px-6 py-14">
-          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-3 leading-snug">
-            How prepared are you?
+
+          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-10 leading-snug">
+            Who this assessment helps
           </h2>
-          <p className="text-lg text-slate-mid mb-8">
-            Three questions. Thirty seconds. A preliminary read on where you stand.
-          </p>
-          <QuickCheck />
+
+          <div className="space-y-8">
+            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
+              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
+                &ldquo;I know I should have a will. I&apos;ve been saying that for years.
+                I just don&apos;t know what I actually need or where to start.&rdquo;
+              </p>
+              <p className="text-sm text-slate-mid">Homeowners with a spouse or family</p>
+            </div>
+
+            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
+              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
+                &ldquo;My parents are getting older and I have no idea what they have
+                in place — or what questions to even ask them.&rdquo;
+              </p>
+              <p className="text-sm text-slate-mid">Adult children helping aging parents</p>
+            </div>
+
+            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
+              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
+                &ldquo;I want to get my affairs in order before I retire.
+                I just don&apos;t want my family to have to figure it all out later.&rdquo;
+              </p>
+              <p className="text-sm text-slate-mid">Anyone approaching or in retirement</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── Sample Report ───────────────────────────────────────────── */}
+      {/* ── What You'll Learn ───────────────────────────────────────── */}
+      <section className="bg-white" style={{ borderBottom: '1px solid #EDE9DC' }}>
+        <div className="max-w-3xl mx-auto px-6 py-14">
+          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-3 leading-snug">
+            What you&apos;ll learn
+          </h2>
+          <p className="text-lg text-slate-mid leading-relaxed mb-10" style={{ maxWidth: '52ch' }}>
+            Your responses are evaluated across 7 key estate planning areas to produce a personalized readiness report.
+          </p>
+          <div className="space-y-5">
+            {DOMAINS.map((d) => (
+              <div key={d.n} className="flex gap-5 border-b border-cream-dark pb-5 last:border-0 last:pb-0">
+                <div
+                  className="shrink-0 text-2xl font-bold leading-none"
+                  style={{ fontFamily: 'var(--font-playfair)', color: '#B5935A' }}
+                >
+                  {d.n}
+                </div>
+                <div>
+                  <p className="text-base font-semibold text-navy mb-1">{d.label}</p>
+                  <p className="text-sm text-slate-mid leading-relaxed">{d.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── What's Included in Your Report ─────────────────────────── */}
       {/*
         Photo: Unsplash photo-1481627834876-b7833e8f5570 (library with Edison bulbs)
-        Cream overlay at 90% — very subtle background texture, does not compete with content.
       */}
       <section
         style={{
@@ -158,12 +234,12 @@ export default function Home() {
         <div className="max-w-3xl mx-auto px-6 py-14">
 
           <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-3 leading-snug">
-            Here is what you receive.
+            What&apos;s included in your report
           </h2>
           <p className="text-lg text-slate-mid leading-relaxed mb-8" style={{ maxWidth: '52ch' }}>
-            A personal report, delivered by email, that scores your estate planning
-            across 7 areas and tells you exactly what to do — in plain English.
-            The following is a sample based on a fictional individual.
+            A personalized estate readiness report, delivered by email, scored across all 7 areas
+            with plain-English findings and a prioritized action plan. The following is based on
+            a fictional individual.
           </p>
 
           <div style={{ border: '1px solid #D1C9B8', overflow: 'hidden' }}>
@@ -209,7 +285,10 @@ export default function Home() {
                     },
                   ].map((item) => (
                     <div key={item.n} className="flex gap-4">
-                      <div className="shrink-0 w-8 h-8 rounded-full bg-navy text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                      <div
+                        className="shrink-0 text-xl font-bold leading-none"
+                        style={{ fontFamily: 'var(--font-playfair)', color: '#B5935A' }}
+                      >
                         {item.n}
                       </div>
                       <div className="border-b border-cream-dark pb-5 last:border-0 last:pb-0 flex-1">
@@ -277,72 +356,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Does this describe you ──────────────────────────────────── */}
-      <section className="bg-white" style={{ borderBottom: '1px solid #EDE9DC' }}>
-        <div className="max-w-3xl mx-auto px-6 py-14">
-
-          <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-10 leading-snug">
-            Does this describe you?
-          </h2>
-
-          <div className="space-y-8">
-            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
-              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
-                &ldquo;I know I should have a will. I&apos;ve been saying that for years.
-                I just don&apos;t know what I actually need or where to start.&rdquo;
-              </p>
-              <p className="text-sm text-slate-mid">Homeowners with a spouse or family</p>
-            </div>
-
-            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
-              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
-                &ldquo;My parents are getting older and I have no idea what they have
-                in place — or what questions to even ask them.&rdquo;
-              </p>
-              <p className="text-sm text-slate-mid">Adult children helping aging parents</p>
-            </div>
-
-            <div style={{ borderLeft: '3px solid #B5935A', paddingLeft: '1.5rem' }}>
-              <p style={{ fontFamily: 'var(--font-playfair)' }} className="text-xl text-navy leading-relaxed font-medium mb-2">
-                &ldquo;I want to get my affairs in order before I retire.
-                I just don&apos;t want my family to have to figure it all out later.&rdquo;
-              </p>
-              <p className="text-sm text-slate-mid">Anyone approaching or in retirement</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Before you begin ────────────────────────────────────────── */}
+      {/* ── How It Works ────────────────────────────────────────────── */}
       <section style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }}>
         <div className="max-w-3xl mx-auto px-6 py-14">
-
           <h2 style={{ fontFamily: 'var(--font-playfair)' }} className="text-4xl font-bold text-navy mb-3 leading-snug">
-            Before you begin.
+            How it works
           </h2>
-          <p className="text-lg text-slate-mid mb-10">Four things you should know.</p>
+          <p className="text-lg text-slate-mid mb-10">Simple, private, and straightforward.</p>
 
-          <div className="space-y-8">
+          <div className="space-y-8 mb-12">
             {[
               {
                 n: '1.',
-                title: 'This is not legal advice.',
-                body: 'Will & Estate Ready is not a law firm and does not represent you in any way. What we provide is an honest, documented picture of where your estate planning stands — scored clearly and explained in plain English. What you do with it is your decision.',
+                title: 'Complete the guided assessment',
+                body: 'Answer 40 plain-language questions across 7 estate planning areas. No documents required — answer based on what you know today. Takes about 10 minutes.',
               },
               {
                 n: '2.',
-                title: 'The cost is $21, one time. No subscription, no renewal.',
-                body: 'You pay once and receive one report, accessible for one year via a secure link sent to your email. There is no account to create, no profile to maintain, and no ongoing charges of any kind.',
+                title: 'Receive your personalized readiness report',
+                body: 'Your responses are evaluated against established estate planning factors. A secure link to your report is delivered to your email — scored, ranked by priority, and written in plain English.',
               },
               {
                 n: '3.',
-                title: 'Your payment is handled by Stripe.',
-                body: 'We never see or store your card details. Stripe processes all payments securely — the same technology used by Amazon, Target, and major financial institutions. You will see "Will & Estate Ready" on your statement.',
-              },
-              {
-                n: '4.',
-                title: 'Your information stays private.',
-                body: 'Your answers are used only to generate your report. We do not sell your data, share it with third parties, or use it to market to you. Your responses are not stored beyond what is required to deliver your report.',
+                title: 'Go into your attorney meeting prepared',
+                body: "Share your report with your attorney, use it to ask better questions, or simply understand what you have and what you're missing. The report is yours to keep for one year.",
               },
             ].map((item) => (
               <div key={item.n} className="flex gap-6">
@@ -353,6 +390,21 @@ export default function Home() {
                   <p className="text-lg font-semibold text-navy mb-2">{item.title}</p>
                   <p className="text-base text-slate-mid leading-relaxed">{item.body}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust notes */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { title: 'Not legal advice', body: 'Will & Estate Ready is not a law firm. We provide educational readiness guidance — not legal representation.' },
+              { title: '$21, one time', body: 'No subscription, no renewal. Pay once and receive one report, accessible for one year.' },
+              { title: 'Payment via Stripe', body: 'We never see or store your card details. Stripe handles all payments securely.' },
+              { title: 'Your information stays private', body: 'Your answers are used only to generate your report. We do not sell or share your data.' },
+            ].map((item) => (
+              <div key={item.title} className="border border-cream-dark bg-white px-5 py-5">
+                <p className="text-sm font-semibold text-navy mb-1">{item.title}</p>
+                <p className="text-sm text-slate-mid leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
@@ -372,8 +424,6 @@ export default function Home() {
       {/* ── Final CTA ───────────────────────────────────────────────── */}
       {/*
         Photo: Unsplash photo-1570129477492-45c003edd2be (classic New England home, green lawn)
-        Dark forest green overlay at 82% — the house silhouette reads through warmly.
-        "This is what you're protecting."
       */}
       <section
         style={{
@@ -385,11 +435,11 @@ export default function Home() {
         <div style={{ backgroundColor: 'rgba(10, 38, 22, 0.84)', width: '100%' }}>
         <div className="max-w-3xl mx-auto px-6 py-20">
           <h2 style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.15 }} className="text-5xl font-bold text-white mb-4">
-            Ten minutes to understand what you&apos;ve been putting off for years.
+            Go into your attorney meeting knowing exactly where you stand.
           </h2>
           <p className="text-xl text-white/80 leading-relaxed mb-10 max-w-lg">
-            $21. One report. A clear picture of where your family stands — and a
-            far better first conversation with an estate planning attorney.
+            $21. One report. A clear picture of your estate planning readiness — and a
+            far more productive first conversation with an estate planning attorney.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
@@ -397,7 +447,7 @@ export default function Home() {
               className="bg-white text-navy px-8 py-4 font-semibold hover:bg-cream transition-colors text-lg text-center"
               style={{ borderBottom: '3px solid #B5935A' }}
             >
-              Begin My Assessment — $21
+              Start My Assessment — $21
             </Link>
             <Link href="/sample-report" className="border border-white/40 text-white px-8 py-4 font-medium hover:bg-white/10 transition-colors text-base text-center">
               View a Sample Report
