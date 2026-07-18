@@ -22,9 +22,88 @@ const DOMAINS = [
   { n: '07', label: 'Special Circumstances',        body: 'Business ownership, blended families, special needs dependents, and international assets.' },
 ]
 
+const STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://willestateready.com/#organization',
+      name: 'Will & Estate Ready',
+      url: 'https://willestateready.com',
+      description:
+        'An estate planning readiness assessment tool. Complete a guided questionnaire and receive a personalized scoring report covering 7 key estate planning areas — wills, trusts, powers of attorney, healthcare directives, beneficiary designations, insurance, and tax awareness.',
+      logo: 'https://willestateready.com/icon.svg',
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://willestateready.com/#service',
+      name: 'Estate Planning Readiness Assessment',
+      url: 'https://willestateready.com',
+      description:
+        'A guided 40-question assessment covering wills, trusts, healthcare directives, powers of attorney, beneficiary designations, insurance, and tax awareness. Receive a personalized readiness report scored across 7 key estate planning areas.',
+      provider: { '@id': 'https://willestateready.com/#organization' },
+      offers: {
+        '@type': 'Offer',
+        price: '21.00',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Is this legal advice?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. Will & Estate Ready is not a law firm and does not provide legal advice. We help you understand your own situation clearly — so that when you do sit down with an attorney, you\'re not starting from zero.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is $21 the full cost? No subscription?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: '$21, one time. No subscription, no renewal, no upsell. You get one report, accessible for one year via a secure link sent to your email.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What happens to my information?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Your responses are used to generate your report — nothing else. We don\'t sell your data, share it with third parties, or use it for marketing. Payment is handled by Stripe. We never see your card.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Do I need to already have an attorney?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. Most people use Will & Estate Ready before they have one — to understand what they actually need before they start making calls.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What if I don\'t know the answers to some questions?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: '"Not sure" is a valid answer. It tells us something useful about your planning readiness. You don\'t need to dig out paperwork or know legal terminology — just answer honestly based on what you know today.',
+          },
+        },
+      ],
+    },
+  ],
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FAF8F2' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+      />
 
       {/* ── Nav ─────────────────────────────────────────────────────── */}
       <header style={{ backgroundColor: '#FAF8F2', borderBottom: '1px solid #EDE9DC' }} className="sticky top-0 z-20">
