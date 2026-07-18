@@ -1,14 +1,15 @@
 """
-main.py — Will & Estate Ready content engine daily entrypoint
+main.py — Will & Estate Ready content engine weekly entrypoint
 
-Runs daily. Pulls signals → generates content → renders image →
-uploads to imgbb → publishes to Facebook + Instagram.
+Runs once per week. Pulls signals → generates 7-day calendar →
+renders 7 images → uploads to imgbb → saves schedule files.
+publish_today.py runs daily to publish each day's Instagram post.
 
 Usage:
   cd scripts/content-engine
-  python3 main.py                  # generate + publish
-  python3 main.py --generate-only  # generate + render, skip publish
-  python3 main.py --date=2026-07-11  # run for a specific date
+  python3 main.py                          # generate week starting today
+  python3 main.py --start-date=2026-07-21  # generate week starting given date
+  python3 main.py --generate-only          # generate + render, skip imgbb upload
 """
 
 import json
@@ -16,90 +17,119 @@ import os
 import sys
 from pathlib import Path
 from datetime import datetime, timezone
+from typing import Optional
 from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 
-OUTPUT_DIR      = Path(__file__).parent / "output"
+OUTPUT_DIR       = Path(__file__).parent / "output"
 FB_SCHEDULE_PATH = OUTPUT_DIR / "fb_schedule.json"
 IG_SCHEDULE_PATH = OUTPUT_DIR / "ig_schedule.json"
 
 
-def _upsert(schedule_path: Path, post: dict, key: str = "scheduled_date") -> None:
-    """Insert or replace a post by date in a schedule file."""
-    existing = []
-    if schedule_path.exists():
+def _save_schedules(posts: list[dict]) -> None:
+    """Upsert all posts into the schedule files by date."""
+    fb_existing, ig_existing = [], []
+    if FB_SCHEDULE_PATH.exists():
         try:
-            existing = json.loads(schedule_path.read_text())
+            fb_existing = json.loads(FB_SCHEDULE_PATH.read_text())
         except Exception:
-            existing = []
-    existing = [p for p in existing if p.get(key) != post[key]]
-    existing.append(post)
-    schedule_path.write_text(json.dumps(existing, indent=2, ensure_ascii=False))
+            pass
+    if IG_SCHEDULE_PATH.exists():
+        try:
+            ig_existing = json.loads(IG_SCHEDULE_PATH.read_text())
+        except Exception:
+            pass
 
+    new_dates = {p["scheduled_date"] for p in posts}
+    fb_existing = [p for p in fb_existing if p.get("scheduled_date") not in new_dates]
+    ig_existing = [p for p in ig_existing if p.get("scheduled_date") not in new_dates]
 
-def run(publish: bool = True, target_date=None) -> None:
-    from signal_pull import build_signal_brief
-    from content import generate_facebook_post, generate_instagram_post
-    from render import render_all
+    for post in posts:
+        fb_existing.append({
+            "scheduled_date": post["scheduled_date"],
+            "angle":          post["angle"],
+            "topic":          post["topic"],
+            "hook":           post["fb_hook"],
+            "body":           post["fb_body"],
+            "image_path":     post.get("image_path", ""),
+            "image_url":      post.get("image_url"),
+            "platform":       "facebook",
+            "status":         "Draft",
+            "fb_published":   False,
+        })
+        ig_existing.append({
+            "scheduled_date": post["scheduled_date"],
+            "angle":          post["angle"],
+            "topic":          post["topic"],
+            "hook":           post["ig_hook"],
+            "body":           post["ig_body"],
+            "cta":            post["ig_cta"],
+            "hashtags":       post["ig_hashtags"],
+            "image_path":     post.get("image_path", ""),
+            "image_url":      post.get("image_url"),
+            "platform":       "instagram",
+            "status":         "Draft",
+            "ig_published":   False,
+        })
 
-    print("=== Will & Estate Ready Content Engine ===\n")
-
-    print("[1/5] Pulling signal brief...")
-    brief = build_signal_brief()
-    if target_date:
-        brief["date"] = target_date
-    print(f"  Date:   {brief['date']}")
-    print(f"  Angle:  {brief['audience_angle']}")
-    print(f"  Headlines: {len(brief['rss_headlines'])}")
-
-    print("\n[2/5] Generating content...")
-    fb_post = generate_facebook_post(brief)
-    ig_post = generate_instagram_post(brief)
-    print(f"  FB  [{fb_post.get('topic')}]: {fb_post.get('hook', '')[:70]}...")
-    print(f"  IG  [{ig_post.get('angle')}]: {ig_post.get('hook', '')[:70]}...")
-
-    print("\n[3/5] Rendering image...")
     OUTPUT_DIR.mkdir(exist_ok=True)
-    image_paths = render_all([ig_post])
-    image_path  = image_paths[0]
-    image_rel   = f"output/{image_path.name}"
+    FB_SCHEDULE_PATH.write_text(json.dumps(fb_existing, indent=2, ensure_ascii=False))
+    IG_SCHEDULE_PATH.write_text(json.dumps(ig_existing, indent=2, ensure_ascii=False))
 
-    fb_post["image_path"] = image_rel
-    ig_post["image_path"] = image_rel
 
-    # Pre-upload to imgbb so schedule is self-contained
-    imgbb_key = os.environ.get("IMGBB_API_KEY")
+def run(start_date: Optional[datetime] = None, upload: bool = True) -> None:
+    from signal_pull import build_signal_brief
+    from content import generate_calendar
+    from render import render_post
+
+    if start_date is None:
+        start_date = datetime.now(timezone.utc)
+
+    print("=== Will & Estate Ready Content Engine — Weekly Run ===\n")
+
+    print("[1/4] Pulling signal brief...")
+    brief = build_signal_brief()
+    print(f"  Headlines: {len(brief['rss_headlines'])}  |  Trends: {len(brief['google_trends'])}")
+
+    print("\n[2/4] Generating 7-day calendar...")
+    posts = generate_calendar(brief, start_date=start_date)
+    print(f"  {len(posts)} posts generated")
+    for i, p in enumerate(posts):
+        print(f"  Day {i+1} [{p['scheduled_date']}] {p['angle']:15s} {p['topic']:20s}  IG: {p['ig_hook'][:50]}...")
+
+    print("\n[3/4] Rendering images...")
+    imgbb_key = os.environ.get("IMGBB_API_KEY") if upload else None
     if imgbb_key:
-        print("\n[3.5/5] Uploading image to imgbb...")
         from instagram_publisher import upload_image
-        url = upload_image(image_path, imgbb_key)
-        ig_post["image_url"] = url
-        fb_post["image_url"] = url
-        print(f"  → {url}")
-    else:
-        print("\n[3.5/5] IMGBB_API_KEY not set — skipping pre-upload")
 
-    print("\n[4/5] Saving schedules...")
-    _upsert(FB_SCHEDULE_PATH, fb_post)
-    _upsert(IG_SCHEDULE_PATH, ig_post)
-    print(f"  FB: output/fb_schedule.json")
-    print(f"  IG: output/ig_schedule.json")
+    for i, post in enumerate(posts):
+        image_path = render_post({"hook": post["ig_hook"], "body": post["ig_body"]}, index=i + 1)
+        image_rel  = f"output/{image_path.name}"
+        post["image_path"] = image_rel
 
-    if not publish:
-        print("\n[5/5] --generate-only — skipping publish")
-        print("\n=== Done (generate only) ===")
-        return
+        if imgbb_key:
+            url = upload_image(image_path, imgbb_key)
+            post["image_url"] = url
+            print(f"  [{i+1}/7] Rendered + uploaded → {url}")
+        else:
+            post["image_url"] = None
+            print(f"  [{i+1}/7] Rendered → {image_rel} (upload skipped)")
 
-    print("\n[5/5] Publishing...")
-    from publish_today import publish_facebook, publish_instagram
-    publish_facebook(brief["date"])
-    publish_instagram(brief["date"])
+    print("\n[4/4] Saving schedules...")
+    _save_schedules(posts)
+    print(f"  IG: {IG_SCHEDULE_PATH}")
+    print(f"  FB: {FB_SCHEDULE_PATH} (post manually — Meta App Review required for API)")
 
     print("\n=== Done ===")
+    print("  Run publish_today.py daily (or set up cron) to auto-publish Instagram.")
+    print("  Copy FB posts from output/fb_schedule.json and post manually to your Page.")
 
 
 if __name__ == "__main__":
-    generate_only = "--generate-only" in sys.argv
-    target_date   = next((a.split("=")[1] for a in sys.argv if a.startswith("--date=")), None)
-    run(publish=not generate_only, target_date=target_date)
+    _upload = "--generate-only" not in sys.argv
+    _start  = None
+    for arg in sys.argv[1:]:
+        if arg.startswith("--start-date="):
+            _start = datetime.strptime(arg.split("=", 1)[1], "%Y-%m-%d")
+    run(start_date=_start, upload=_upload)

@@ -39,6 +39,12 @@ export default async function BlogArticlePage({ params }: Props) {
         headline: article.title,
         description: article.description,
         datePublished: article.publishedAt,
+        dateModified: article.publishedAt,
+        author: {
+          '@type': 'Organization',
+          name: 'Will & Estate Ready',
+          url: 'https://willestateready.com',
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Will & Estate Ready',

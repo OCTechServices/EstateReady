@@ -150,7 +150,11 @@ and confirm all three are accurate before we sign off.
 - [x] Custom domain willestateready.com — Production in Vercel; www → 307 redirect
 - [x] Remove Impact affiliate meta tag (layout.tsx + page.tsx)
 - [x] Resource links in report + email (Policygenius, LegalZoom, ACTEC) — affiliate URLs pending, direct links live
+- [x] Structured data — Organization, Service, FAQPage schema on homepage (JSON-LD @graph)
+- [x] Google Search Console verified (Domain method) + sitemap.xml submitted
 - [ ] Real $21 paid transaction (no coupon) end-to-end verification at willestateready.com
 - [ ] Policygenius affiliate approval → swap href in report:364 and resend.ts
 - [ ] LegalZoom affiliate approval → swap href in report:371 and resend.ts
+- [x] Blog section (/blog) + seed articles for SEO
+- [x] Social content engine — weekly main.py + daily publish_today.py active (IG auto-publish; FB manual from fb_schedule.json)
 - [ ] Partner portal — Phase 2

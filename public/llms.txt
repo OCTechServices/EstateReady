@@ -13,10 +13,10 @@ EstateReady is a pay-per-report tool ($21 one-time) that helps individuals under
 
 ## Key pages
 
-- [Home](https://estateready.com): Marketing and intake entry point
-- [Sample Report](https://estateready.com/sample-report): Example Tier 3 report for a fictional individual
-- [Privacy Policy](https://estateready.com/privacy): Data collection and handling
-- [Disclaimer](https://estateready.com/disclaimer): Not legal advice, not a law firm
+- [Home](https://willestateready.com): Marketing and intake entry point
+- [Sample Report](https://willestateready.com/sample-report): Example Tier 3 report for a fictional individual
+- [Privacy Policy](https://willestateready.com/privacy): Data collection and handling
+- [Disclaimer](https://willestateready.com/disclaimer): Not legal advice, not a law firm
 
 ## 7 Assessment domains
 
@@ -38,4 +38,4 @@ $21 per report · one-time · no subscription · no renewal
 
 ## Contact
 
-support@estateready.com
+support@willestateready.com

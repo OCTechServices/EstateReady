@@ -15,6 +15,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://willestateready.com'),
   title: 'Will & Estate Ready — Estate Planning Readiness Assessment',
   description:
     'A guided assessment covering wills, trusts, healthcare directives, powers of attorney, and beneficiary designations. Receive a personalized readiness report that prepares you for a more informed conversation with an estate planning attorney. $21 one-time.',
@@ -36,12 +37,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
-      {/* Impact affiliate site verification — remove once verified */}
-      {/* eslint-disable-next-line @next/next/no-head-element */}
-      <head>
-        {/* @ts-expect-error Impact uses non-standard `value` attribute */}
-        <meta name="impact-site-verification" value="d9cfd263-6971-4a63-8a1f-75fadce741d4" />
-      </head>
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   )

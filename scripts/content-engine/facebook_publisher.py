@@ -14,9 +14,9 @@ Get credentials:
 """
 
 import os
-import base64
 import requests
 from pathlib import Path
+from typing import Optional
 
 GRAPH_API_BASE = "https://graph.facebook.com/v21.0"
 
@@ -31,26 +31,37 @@ def _get_credentials() -> tuple[str, str]:
     return page_id, page_token
 
 
-def post_photo(image_path: Path, caption: str) -> str:
+def post_photo(image_path: Path, caption: str, image_url: Optional[str] = None) -> str:
     """
     Publish a photo post to the Facebook Page.
-    Uploads image as base64 + posts caption. Returns post ID.
+    Prefers posting via public URL (image_url) if provided; falls back to file upload.
+    Returns post ID.
     """
     page_id, page_token = _get_credentials()
 
-    with open(image_path, "rb") as f:
-        image_data = f.read()
+    if image_url:
+        resp = requests.post(
+            f"{GRAPH_API_BASE}/{page_id}/photos",
+            data={
+                "url":          image_url,
+                "message":      caption,
+                "access_token": page_token,
+            },
+        )
+    else:
+        with open(image_path, "rb") as f:
+            image_data = f.read()
+        resp = requests.post(
+            f"{GRAPH_API_BASE}/{page_id}/photos",
+            data={
+                "message":      caption,
+                "access_token": page_token,
+            },
+            files={
+                "source": (image_path.name, image_data, "image/png"),
+            },
+        )
 
-    resp = requests.post(
-        f"{GRAPH_API_BASE}/{page_id}/photos",
-        data={
-            "message":      caption,
-            "access_token": page_token,
-        },
-        files={
-            "source": (image_path.name, image_data, "image/png"),
-        },
-    )
     resp.raise_for_status()
     result = resp.json()
 

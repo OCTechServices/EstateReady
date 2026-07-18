@@ -41,8 +41,9 @@ def publish_facebook(target_date: str) -> None:
 
     try:
         from facebook_publisher import post_photo, build_caption
-        caption  = build_caption(post)
-        post_id  = post_photo(image_path, caption)
+        caption   = build_caption(post)
+        image_url = post.get("image_url")
+        post_id   = post_photo(image_path, caption, image_url=image_url)
         post["fb_published"] = True
         FB_SCHEDULE_PATH.write_text(json.dumps(schedule, indent=2, ensure_ascii=False))
         print(f"[FB] Done — post_id: {post_id}")
