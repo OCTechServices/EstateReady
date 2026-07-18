@@ -145,6 +145,95 @@ body {
   color: var(--foreground);
 }
 
+/* ── Blog article typography ────────────────────────────────── */
+.blog-content p {
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+.blog-content h2 {
+  font-family: var(--font-playfair);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A4A2E;
+  margin-top: 2.5rem;
+  margin-bottom: 0.875rem;
+  line-height: 1.25;
+}
+.blog-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A4A2E;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.blog-content ul,
+.blog-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.blog-content ul { list-style-type: disc; }
+.blog-content ol { list-style-type: decimal; }
+.blog-content li {
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+.blog-content strong { color: #1A4A2E; font-weight: 600; }
+.blog-content a { color: #1A4A2E; text-decoration: underline; text-underline-offset: 3px; }
+.blog-content a:hover { color: #2D6A4F; }
+
+/* Quick Answer callout */
+.blog-content .quick-answer {
+  background: #F0F5F2;
+  border-left: 4px solid #B5935A;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.blog-content .quick-answer-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #B5935A;
+  margin-bottom: 0.5rem !important;
+}
+.blog-content .quick-answer p:last-child { margin-bottom: 0; }
+
+/* Blog CTA block */
+.blog-content .blog-cta {
+  background: #1A4A2E;
+  padding: 2rem;
+  margin-top: 2.5rem;
+  border-bottom: 3px solid #B5935A;
+}
+.blog-content .blog-cta-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #B5935A;
+  margin-bottom: 0.75rem !important;
+}
+.blog-content .blog-cta-body {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9375rem;
+  margin-bottom: 1.25rem !important;
+}
+.blog-content .blog-cta-link {
+  display: inline-block;
+  background: white;
+  color: #1A4A2E !important;
+  text-decoration: none !important;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 2px solid #B5935A;
+}
+.blog-content .blog-cta-link:hover { background: #FAF8F2; }
+
 @media print {
   @page {
     margin: 0.5in;
