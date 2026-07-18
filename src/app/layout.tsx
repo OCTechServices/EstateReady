@@ -36,6 +36,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
+      {/* Impact affiliate site verification — remove once verified */}
+      {/* eslint-disable-next-line @next/next/no-head-element */}
+      <head>
+        {/* @ts-expect-error Impact uses non-standard `value` attribute */}
+        <meta name="impact-site-verification" value="d9cfd263-6971-4a63-8a1f-75fadce741d4" />
+      </head>
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   )

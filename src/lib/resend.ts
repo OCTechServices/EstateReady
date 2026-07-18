@@ -53,6 +53,25 @@ export async function sendMagicLink(email: string, token: string): Promise<void>
                 View My Report →
               </a>
 
+              <!-- Secondary resources -->
+              <div style="margin: 36px 0 0; padding: 24px; background: #FAF8F2; border: 1px solid #EDE9DC;">
+                <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #9DA8A0; margin: 0 0 16px;">
+                  Where to go from here
+                </p>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 10px 0; border-top: 1px solid #EDE9DC; vertical-align: top; width: 50%;">
+                      <p style="font-size: 13px; font-weight: 600; color: #1A4A2E; margin: 0 0 2px;">Review life insurance</p>
+                      <a href="https://www.policygenius.com/life-insurance/" style="font-size: 12px; color: #B5935A; text-decoration: none;">Policygenius →</a>
+                    </td>
+                    <td style="padding: 10px 0 10px 16px; border-top: 1px solid #EDE9DC; vertical-align: top;">
+                      <p style="font-size: 13px; font-weight: 600; color: #1A4A2E; margin: 0 0 2px;">Draft estate documents</p>
+                      <a href="https://www.legalzoom.com/personal/estate-planning/" style="font-size: 12px; color: #B5935A; text-decoration: none;">LegalZoom →</a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
               <div style="border-top: 1px solid #EDE9DC; margin: 40px 0 0; padding-top: 24px;">
                 <p style="font-size: 12px; color: #9CA3AF; margin: 0 0 8px; line-height: 1.6;">
                   This link is unique to you and valid for one year. Do not share it.<br>

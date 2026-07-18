@@ -142,7 +142,15 @@ and confirm all three are accurate before we sign off.
 - [x] Admin resend-email endpoint (/api/admin/resend-email)
 - [x] Promo codes enabled on Stripe Checkout
 - [x] Mobile UX — collapsible report sections, Safari animation fixes
-- [ ] Remove Impact affiliate meta tag once verified (layout.tsx + page.tsx)
-- [ ] Real $21 paid transaction (no coupon) end-to-end verification
-- [ ] Trust & Will affiliate approval + add referral link to report and email
+- [x] Full rebrand — advisor-first, Kiplinger/Vanguard aesthetic, no AI language
+- [x] Compass mark favicon (SVG + PNG 192/512 + apple-icon + ICO) + CompassMark.tsx component
+- [x] OG image redesign — two-column, compass mark, sample report card
+- [x] Supabase ENOTFOUND fix — old deleted project URL purged from Vercel env vars
+- [x] NEXT_PUBLIC_URL fix — added https:// prefix, now https://willestateready.com
+- [x] Custom domain willestateready.com — Production in Vercel; www → 307 redirect
+- [x] Remove Impact affiliate meta tag (layout.tsx + page.tsx)
+- [x] Resource links in report + email (Policygenius, LegalZoom, ACTEC) — affiliate URLs pending, direct links live
+- [ ] Real $21 paid transaction (no coupon) end-to-end verification at willestateready.com
+- [ ] Policygenius affiliate approval → swap href in report:364 and resend.ts
+- [ ] LegalZoom affiliate approval → swap href in report:371 and resend.ts
 - [ ] Partner portal — Phase 2
