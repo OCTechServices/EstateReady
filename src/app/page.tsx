@@ -113,8 +113,11 @@ export default function Home() {
             <span style={{ fontFamily: 'var(--font-playfair)' }} className="text-lg font-bold text-navy">Will &amp; Estate Ready</span>
           </a>
           <div className="flex items-center gap-5">
+            <Link href="/blog" className="text-sm text-slate-mid hover:text-navy transition-colors hidden sm:block">
+              Guides
+            </Link>
             <Link href="/sample-report" className="text-sm text-slate-mid hover:text-navy transition-colors hidden sm:block">
-              View Sample Report
+              Sample Report
             </Link>
             <Link href="/intake" className="text-sm font-semibold text-navy border border-navy px-4 py-2 hover:bg-navy hover:text-white transition-colors">
               Start Assessment
