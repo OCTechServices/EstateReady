@@ -1,98 +1,225 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'EstateReady — Know Where Your Estate Planning Stands'
+export const alt = 'Will & Estate Ready — Estate Planning Readiness Assessment'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-const DOMAINS = [
-  { label: 'Asset Titling',          status: 'Critical', garnet: true  },
-  { label: 'Healthcare Directives',  status: 'Caution',  garnet: false },
-  { label: 'Will & Trust',           status: 'Caution',  garnet: false },
-  { label: 'Beneficiary',            status: 'Info',     garnet: false },
+const FINDINGS = [
+  { label: 'Existing Documents',       status: 'Critical', critical: true  },
+  { label: 'Beneficiary Designations', status: 'Critical', critical: true  },
+  { label: 'Insurance Structure',      status: 'Caution',  critical: false },
+  { label: 'Tax Awareness',            status: 'Note',     critical: false },
 ]
 
 export default function OGImage() {
   return new ImageResponse(
     (
-      <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', fontFamily: 'Georgia, serif', background: '#0F3020', padding: 24 }}>
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          fontFamily: 'Georgia, serif',
+          background: '#1A4A2E',
+          position: 'relative',
+        }}
+      >
+        {/* Gold top accent bar */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, background: '#B5935A', display: 'flex' }} />
 
-        {/* Card fills canvas */}
-        <div style={{ display: 'flex', flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', border: '1px solid rgba(181,147,90,0.25)', borderRadius: 20, overflow: 'hidden' }}>
-
-          {/* Ribbon accents inside card */}
-          <div style={{ position: 'absolute', top: '-200px', right: '-40px',  width: '180px', height: '1100px', background: 'rgba(181,147,90,0.07)', borderRadius: '90px', transform: 'rotate(-21deg)', display: 'flex' }} />
-          <div style={{ position: 'absolute', top: '-240px', right: '140px',  width: '120px', height: '1100px', background: 'rgba(45,106,79,0.10)',  borderRadius: '70px', transform: 'rotate(-21deg)', display: 'flex' }} />
-          <div style={{ position: 'absolute', top: '-220px', right: '280px',  width: '80px',  height: '1100px', background: 'rgba(107,31,53,0.09)',  borderRadius: '55px', transform: 'rotate(-21deg)', display: 'flex' }} />
-          <div style={{ position: 'absolute', top: '-260px', left: '-60px',   width: '120px', height: '1100px', background: 'rgba(181,147,90,0.05)', borderRadius: '70px', transform: 'rotate(-21deg)', display: 'flex' }} />
-          <div style={{ position: 'absolute', top: '-240px', left: '80px',    width: '70px',  height: '1100px', background: 'rgba(45,106,79,0.07)',  borderRadius: '45px', transform: 'rotate(-21deg)', display: 'flex' }} />
-
+        {/* Left panel */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            width: '52%',
+            padding: '60px 64px',
+          }}
+        >
           {/* Eyebrow */}
-          <span style={{ color: '#D4B483', fontSize: 11, fontWeight: 700, letterSpacing: '0.26em', textTransform: 'uppercase', marginBottom: 10 }}>
-            Estate Planning Assessment
+          <span
+            style={{
+              color: '#B5935A',
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              marginBottom: 22,
+              display: 'flex',
+            }}
+          >
+            Estate Planning Readiness Assessment
           </span>
 
           {/* Wordmark */}
-          <span style={{ color: 'white', fontSize: 56, fontWeight: 700, lineHeight: 1, letterSpacing: '-0.02em', marginBottom: 32 }}>
-            EstateReady
+          <span
+            style={{
+              color: 'white',
+              fontSize: 56,
+              fontWeight: 700,
+              lineHeight: 1.05,
+              letterSpacing: '-0.02em',
+              marginBottom: 28,
+              display: 'flex',
+            }}
+          >
+            Will &amp; Estate Ready
           </span>
 
-          {/* Score ring */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: 130, height: 130, borderRadius: '50%', border: '7px solid #B5935A', marginBottom: 28 }}>
-            <span style={{ color: '#D4B483', fontSize: 44, fontWeight: 700, lineHeight: 1 }}>69</span>
-            <span style={{ color: 'rgba(212,180,131,0.80)', fontSize: 12, lineHeight: 1, marginTop: 4 }}>/ 100</span>
+          {/* Tagline */}
+          <span
+            style={{
+              color: 'rgba(255,255,255,0.72)',
+              fontSize: 22,
+              lineHeight: 1.45,
+              marginBottom: 48,
+              maxWidth: 480,
+              display: 'flex',
+            }}
+          >
+            Know where you stand before you meet an attorney.
+          </span>
+
+          {/* Gold divider */}
+          <div style={{ width: 48, height: 2, background: '#B5935A', marginBottom: 36, display: 'flex' }} />
+
+          {/* Trust signals */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {['Covers 7 key estate planning areas', '~10 minutes · $21 one-time', 'Educational guidance, not legal advice'].map((s) => (
+              <div key={s} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <div style={{ width: 5, height: 5, background: '#B5935A', marginRight: 12, display: 'flex', flexShrink: 0 }} />
+                <span style={{ color: 'rgba(255,255,255,0.60)', fontSize: 14, display: 'flex' }}>{s}</span>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Tier label */}
-          <span style={{ color: 'white', fontSize: 24, fontWeight: 700, letterSpacing: '-0.01em', marginBottom: 8 }}>
-            Tier 3 — Complex
-          </span>
+        {/* Right panel — sample report card */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            width: '48%',
+            padding: '60px 56px 60px 0',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              background: 'rgba(255,255,255,0.05)',
+              border: '1px solid rgba(181,147,90,0.22)',
+              overflow: 'hidden',
+            }}
+          >
+            {/* Card header */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '18px 24px',
+                borderBottom: '1px solid rgba(181,147,90,0.15)',
+              }}
+            >
+              <span style={{ color: 'rgba(255,255,255,0.50)', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', display: 'flex' }}>
+                Sample Report
+              </span>
+              <span style={{ color: '#B5935A', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', display: 'flex' }}>
+                Tier 3 — Complex
+              </span>
+            </div>
 
-          {/* Tier description */}
-          <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: 14, lineHeight: 1.5, marginBottom: 32, textAlign: 'center' }}>
-            Significant complexity requiring structured planning and professional guidance.
-          </span>
-
-          {/* Domain pills row */}
-          <div style={{ display: 'flex', flexDirection: 'row', marginBottom: 36 }}>
-            {DOMAINS.map((d, i) => (
+            {/* Score row */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                padding: '24px 24px 20px',
+                gap: 20,
+              }}
+            >
               <div
-                key={d.label}
                 style={{
                   display: 'flex',
-                  flexDirection: 'row',
+                  flexDirection: 'column',
                   alignItems: 'center',
-                  marginLeft: i === 0 ? 0 : 10,
-                  background: d.garnet ? 'rgba(180,55,75,0.28)' : d.status === 'Caution' ? 'rgba(181,147,90,0.22)' : 'rgba(74,99,85,0.24)',
-                  borderRadius: 24,
-                  padding: '7px 16px',
+                  justifyContent: 'center',
+                  width: 80,
+                  height: 80,
+                  borderRadius: '50%',
+                  border: '4px solid #B5935A',
+                  flexShrink: 0,
                 }}
               >
-                <div style={{ display: 'flex', width: 5, height: 5, borderRadius: '50%', background: d.garnet ? '#F5B4BE' : d.status === 'Caution' ? '#D4B483' : '#96B4A5', marginRight: 7 }} />
-                <span style={{ color: 'rgba(255,255,255,0.88)', fontSize: 13 }}>{d.label}</span>
-                <span style={{ color: d.garnet ? '#F5B4BE' : d.status === 'Caution' ? '#D4B483' : '#96B4A5', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', marginLeft: 8 }}>
-                  {d.status}
+                <span style={{ color: '#D4B483', fontSize: 28, fontWeight: 700, lineHeight: 1, display: 'flex' }}>68</span>
+                <span style={{ color: 'rgba(212,180,131,0.70)', fontSize: 10, marginTop: 2, display: 'flex' }}>/ 100</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ color: 'white', fontSize: 18, fontWeight: 700, lineHeight: 1.2, marginBottom: 6, display: 'flex' }}>
+                  Assessment Complete
+                </span>
+                <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, lineHeight: 1.4, display: 'flex' }}>
+                  3 critical gaps identified
                 </span>
               </div>
-            ))}
-          </div>
+            </div>
 
-          {/* Divider */}
-          <div style={{ display: 'flex', width: 40, height: 1, background: 'rgba(181,147,90,0.35)', marginBottom: 20 }} />
-
-          {/* Tagline + stats */}
-          <span style={{ color: 'rgba(255,255,255,0.80)', fontSize: 13, marginBottom: 14, textAlign: 'center' }}>
-            A clear, honest picture of your estate planning — and exactly what to do next.
-          </span>
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            {['40 questions', '$21 one-time', '~10 minutes'].map((s, i) => (
-              <div key={s} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: i === 0 ? 0 : 20 }}>
-                <div style={{ display: 'flex', width: 3, height: 3, borderRadius: '50%', background: '#B5935A', marginRight: 7 }} />
-                <span style={{ color: 'rgba(255,255,255,0.70)', fontSize: 12 }}>{s}</span>
+            {/* Findings */}
+            <div style={{ display: 'flex', flexDirection: 'column', padding: '0 24px 24px' }}>
+              <span style={{ color: 'rgba(255,255,255,0.40)', fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 12, display: 'flex' }}>
+                Domain Findings
+              </span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {FINDINGS.map((f) => (
+                  <div
+                    key={f.label}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      padding: '8px 12px',
+                      background: f.critical ? 'rgba(122,40,64,0.30)' : 'rgba(181,147,90,0.12)',
+                      borderLeft: `3px solid ${f.critical ? '#7A2840' : '#B5935A'}`,
+                      gap: 10,
+                    }}
+                  >
+                    <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: 12, flex: 1, display: 'flex' }}>{f.label}</span>
+                    <span
+                      style={{
+                        color: f.critical ? '#F5B4BE' : f.status === 'Caution' ? '#D4B483' : 'rgba(255,255,255,0.45)',
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        display: 'flex',
+                      }}
+                    >
+                      {f.status}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-
         </div>
+
+        {/* Vertical divider */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '52%',
+            top: 60,
+            bottom: 60,
+            width: 1,
+            background: 'rgba(181,147,90,0.15)',
+            display: 'flex',
+          }}
+        />
       </div>
     ),
     { ...size }
