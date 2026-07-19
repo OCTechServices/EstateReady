@@ -1,0 +1,42 @@
+name: Content Engine — Weekly Run
+
+on:
+  schedule:
+    - cron: '0 16 * * 0'  # Sunday 4 PM UTC (9 AM PDT) — generates Mon–Sun schedule
+  workflow_dispatch:        # manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        working-directory: scripts/content-engine
+        run: pip install -r requirements.txt
+
+      - name: Generate weekly content schedule
+        working-directory: scripts/content-engine
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          IMGBB_API_KEY:     ${{ secrets.IMGBB_API_KEY }}
+          IG_ACCESS_TOKEN:   ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID:        ${{ secrets.IG_USER_ID }}
+        run: python3 main.py
+
+      - name: Commit schedule files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f scripts/content-engine/output/fb_schedule.json
+          git add -f scripts/content-engine/output/ig_schedule.json
+          git diff --staged --quiet || git commit -m "chore: weekly content schedule [skip ci]"
+          git push

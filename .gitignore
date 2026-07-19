@@ -47,5 +47,7 @@ next-env.d.ts
 scripts/content-engine/.env
 scripts/content-engine/venv/
 scripts/content-engine/output/
+!scripts/content-engine/output/fb_schedule.json
+!scripts/content-engine/output/ig_schedule.json
 scripts/content-engine/fonts/
 scripts/content-engine/__pycache__/

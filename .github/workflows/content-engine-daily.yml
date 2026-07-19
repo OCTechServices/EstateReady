@@ -1,0 +1,35 @@
+name: Content Engine — Daily Publish
+
+on:
+  schedule:
+    - cron: '0 15 * * *'  # 3 PM UTC / 8 AM PDT daily
+  workflow_dispatch:        # manual trigger with optional date override
+    inputs:
+      date:
+        description: 'Date to publish (YYYY-MM-DD). Defaults to today.'
+        required: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        working-directory: scripts/content-engine
+        run: pip install -r requirements.txt
+
+      - name: Publish today's post
+        working-directory: scripts/content-engine
+        env:
+          IG_ACCESS_TOKEN:      ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID:           ${{ secrets.IG_USER_ID }}
+          IMGBB_API_KEY:        ${{ secrets.IMGBB_API_KEY }}
+          FACEBOOK_PAGE_ID:     ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_TOKEN:  ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+        run: python3 publish_today.py ${{ inputs.date || '' }}
