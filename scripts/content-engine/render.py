@@ -11,13 +11,13 @@ Font priority:
 from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
 
-# Brand colors (RGB)
-BG          = (15, 48, 32)      # #0F3020
-BG_LIGHT    = (26, 74, 46)      # #1A4A2E
-GOLD        = (181, 147, 90)    # #B5935A
-GOLD_LIGHT  = (212, 180, 131)   # #D4B483
-CREAM       = (250, 248, 242)   # #FAF8F2
-CREAM_DIM   = (155, 150, 138)   # muted cream for body text
+# Brand colors (RGB) — light/cream edition (matches homepage #FAF8F2 background)
+BG          = (250, 248, 242)   # #FAF8F2 — homepage warm cream
+BG_LIGHT    = (237, 233, 220)   # #EDE9DC — subtle inner panel border
+GOLD        = (181, 147, 90)    # #B5935A — unchanged
+GOLD_LIGHT  = (181, 147, 90)    # #B5935A — gold (used for wordmark + URL)
+CREAM       = (15, 48, 32)      # #0F3020 — hook text (dark forest green on light bg)
+CREAM_DIM   = (74, 96, 80)      # muted forest green for body text
 
 SIZE = 1080
 PAD  = 72
