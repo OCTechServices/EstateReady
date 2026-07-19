@@ -27,18 +27,28 @@ FONTS_DIR  = Path(__file__).parent / "fonts"
 
 _BOLD_PATHS = [
     str(FONTS_DIR / "Inter-Bold.ttf"),
+    # macOS
     "/Library/Fonts/Georgia Bold.ttf",
     "/Library/Fonts/Arial Bold.ttf",
     "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
     "/System/Library/Fonts/Helvetica.ttc",
+    # Linux (Ubuntu / GitHub Actions)
+    "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
 ]
 
 _REGULAR_PATHS = [
     str(FONTS_DIR / "Inter-Regular.ttf"),
+    # macOS
     "/Library/Fonts/Georgia.ttf",
     "/Library/Fonts/Arial.ttf",
     "/System/Library/Fonts/Supplemental/Georgia.ttf",
     "/System/Library/Fonts/Helvetica.ttc",
+    # Linux (Ubuntu / GitHub Actions)
+    "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
 ]
 
 
