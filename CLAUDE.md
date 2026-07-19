@@ -156,5 +156,6 @@ and confirm all three are accurate before we sign off.
 - [ ] Policygenius affiliate approval → swap href in report:364 and resend.ts
 - [ ] LegalZoom affiliate approval → swap href in report:371 and resend.ts
 - [x] Blog section (/blog) + seed articles for SEO
-- [x] Social content engine — weekly main.py + daily publish_today.py active (IG auto-publish; FB manual from fb_schedule.json)
+- [x] Social content engine — GitHub Actions automated (weekly Sun 4PM UTC + daily 3PM UTC); IG auto-publish; FB manual from fb_schedule.json
+- [x] Facebook cover photo + profile icon — cream/forest green brand theme (public/facebook-cover.png + logo-icon.png)
 - [ ] Partner portal — Phase 2
